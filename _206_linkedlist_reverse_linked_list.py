@@ -22,6 +22,9 @@ class Solution:
         else:
             return None
 
+"""
+    I finished this by myself.
+"""
 
 if __name__ == '__main__':
     demo = Solution()
