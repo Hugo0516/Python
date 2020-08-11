@@ -17,7 +17,7 @@ def build_heap(array):
     last_node = len(array) - 1
     parent = (last_node - 1) // 2
     for i in range(parent, -1, -1):
-        heapify2(array, len(array), i)
+        heapify2(array, len(array)-1, i)    # 不確定這裡是 len(array) or len(array)-1
 
 
 def heap_sort2(array):
