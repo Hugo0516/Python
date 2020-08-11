@@ -8,16 +8,19 @@ class ListNode:
 class Solution:
     def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
         count = 1
-        root = ListNode(0)
-        root.next = head
-        pre = root
+        dummy = ListNode(0)
+        dummy.next = head
+        pre = dummy
+
         while pre.next and count < m:
             pre = pre.next
             count += 1
         if count < m:
             return head
+
         mNode = pre.next
         curr = mNode.next
+
         while curr and count < n:
             next = curr.next
             curr.next = pre.next
@@ -25,7 +28,8 @@ class Solution:
             mNode.next = next
             curr = next
             count += 1
-        return root.next
+
+        return dummy.next
 
 """
     t.ly/RyuI
