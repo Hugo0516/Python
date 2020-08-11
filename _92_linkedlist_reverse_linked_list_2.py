@@ -8,34 +8,64 @@ class ListNode:
 class Solution:
     def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
         count = 1
-        dummy = ListNode(0)
-        dummy.next = head
-        pre = dummy
+        dummy = ListNode(0)  # 0
+        dummy.next = head  # dummy.next = 1
+        pre = dummy  # pre = dummy = 0
 
-        while pre.next and count < m:
-            pre = pre.next
-            count += 1
+        while pre.next and count < m:  # pre.next = 1
+            pre = pre.next  # pre = pre.next = 1
+            count += 1  # count = 2
         if count < m:
             return head
 
-        mNode = pre.next
-        curr = mNode.next
+        mNode = pre.next  # mNode = 1
+        curr = mNode.next  # curr = 2
 
-        while curr and count < n:
-            next = curr.next
-            curr.next = pre.next
-            pre.next = curr
-            mNode.next = next
-            curr = next
-            count += 1
+        while curr and count < n:  # curr = 2, count = 2, n = 4
+            next = curr.next  # next = 3
+            curr.next = pre.next  # 2.next = pre.next = 1
+            pre.next = curr  # pre.next = 2
+            mNode.next = next  # 1.next = 3
+            curr = next  # curr = 3
+            count += 1  # count = 3
 
         return dummy.next
+
+    def reverseBetween2(self, head: ListNode, m: int, n: int) -> ListNode:
+        if head is None:
+            return None
+
+        dummy = ListNode(-1)
+        dummy.next = head
+        mNode = head
+        preM = dummy
+        nNode = head
+
+        for i in range(1, m):
+            preM = mNode
+            mNode = mNode.next
+
+        for i in range(1, n):
+            nNode = nNode.next
+
+        while mNode != nNode:
+            preM.next = mNode.next
+            mNode.next = nNode.next
+            nNode.next = mNode
+            mNode = preM.next
+
+        return dummy.next
+
 
 """
     Input: 1->2->3->4->5->NULL, m = 2, n = 4
     Output: 1->4->3->2->5->NULL
     
+    method 1:
     t.ly/RyuI
+    
+    method2:
+    https://www.youtube.com/watch?v=esl_A_pzBcg
 """
 
 if __name__ == '__main__':
