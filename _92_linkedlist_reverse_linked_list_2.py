@@ -58,12 +58,16 @@ class Solution:
 
 
 """
+    Reverse a linked list from position m to n. Do it in one-pass.
+    Note: 1 ≤ m ≤ n ≤ length of list.
+    
     Input: 1->2->3->4->5->NULL, m = 2, n = 4
     Output: 1->4->3->2->5->NULL
     
     method 1:
     t.ly/RyuI
     
+    法二屌打！！！
     method2:
     https://www.youtube.com/watch?v=esl_A_pzBcg
 """
@@ -80,7 +84,7 @@ if __name__ == '__main__':
     root_3.next = root_4
     root_4.next = root_5
 
-    output = demo.reverseBetween(root, 2, 4)
+    output = demo.reverseBetween2(root, 1, 3)
 
     while output:
         print(output.val, end=' ')
