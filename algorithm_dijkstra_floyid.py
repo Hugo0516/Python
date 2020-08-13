@@ -88,7 +88,7 @@ print(Floyd(matrix_distance))
     若使用Fibonacci Heap，只需要O(E+VlogV)。
     講義 6-42, Time Complexity = line20 * (line26 + line33) = O(n) *O(2*n) = O(2*n^2) ~= O(n^2) (記住這個!!!!!!!)
     
-    =>(延伸), 因為Bellmend-Ford 和 dijkstra 都是single pair shortest path, therefore bothe of Dijkstra and Bellmend-Ford:
+    =>(延伸), 因為Bellmend-Ford 和 dijkstra 都是single pair shortest path, therefore both Dijkstra and Bellmend-Ford:
     Time Complexity: O(n^2)
     
     Floyid: (All pair shortest-path)
