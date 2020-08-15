@@ -19,7 +19,7 @@ def inorderIterative(root):
     # curr = root
 
     # if current node is None and stack is also empty, we're done
-    while stack or root: # 這裏底下的 root 原本是 curr (19 行)
+    while stack or root:  # 這裏底下的 root 原本是 curr (19 行)
         # if current node is not None, push it to the stack (defer it)
         # and move to its left child
         if root:
@@ -65,8 +65,6 @@ def Preorderiterative(root):
     # create an empty stack and push root to it
     nodeStack = []
     nodeStack.append(root)
-    num = 1
-    print(num, 'a')
 
     # Pop all items one by one. Do following for every popped item
     # a) print it
@@ -78,21 +76,14 @@ def Preorderiterative(root):
 
         # Pop the top item from stack and print it
         node = nodeStack.pop()
-        num -= 1
-        print(node.data, 'QQ',end=' ')
-        print('\n')
-        print(num, 'b')
+        print(node.data, end=' ')
 
         # Push right and left children of the popped node
         # to stack
         if node.right:
             nodeStack.append(node.right)
-            num += 1
-            print(num, 'c')
         if node.left:
             nodeStack.append(node.left)
-            num += 1
-            print(num, 'd')
 
         # Driver program to test above function
 
