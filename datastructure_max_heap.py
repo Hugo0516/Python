@@ -33,7 +33,7 @@ class MaxHeap:
     # Function that returns true if the passed
     # node is a leaf node
     def isLeaf(self, pos):
-        if pos >= (self.size // 2) and pos <= self.size:
+        if (self.size // 2) <= pos <= self.size:
             return True
         return False
 
@@ -100,19 +100,19 @@ class MaxHeap:
 
 if __name__ == "__main__":
     print('The maxHeap is ')
-    minHeap = MaxHeap(15)
-    minHeap.insert(5)
-    minHeap.insert(3)
-    minHeap.insert(17)
-    minHeap.insert(10)
-    minHeap.insert(84)
-    minHeap.insert(19)
-    minHeap.insert(6)
-    minHeap.insert(22)
-    minHeap.insert(9)
+    maxHeap = MaxHeap(15)
+    maxHeap.insert(5)
+    maxHeap.insert(3)
+    maxHeap.insert(17)
+    maxHeap.insert(10)
+    maxHeap.insert(84)
+    maxHeap.insert(19)
+    maxHeap.insert(6)
+    maxHeap.insert(22)
+    maxHeap.insert(9)
 
-    minHeap.Print()
-    print("The Max val is " + str(minHeap.extractMax()))
+    maxHeap.Print()
+    print("The Max val is " + str(maxHeap.extractMax()))
 
 """
     Time complexity for both min-heap and max-heap:
@@ -120,6 +120,8 @@ if __name__ == "__main__":
     push and pop =>>O(LogN) (因為是完整二元樹Ｒ，所以每一次都會選擇要在左邊還是右邊進行插入(看哪邊有缺）
     (因為都是從最做邊開始插入嘛，所以通常都是右邊有缺，所以差右邊，選定是右邊後因為換一層高度就是 除以2，所以
     很合理 O(LogN) ) (刪除也是依此類推)
+    
+    這裡用的低一顆node我們表示為1, 當然你也可以表示為0, 反正看心情
     
     https://www.geeksforgeeks.org/max-heap-in-python/?ref=leftbar-rightbar
 """
