@@ -42,6 +42,8 @@ print(input2)
     Time Complexity: O(NLogN) (heapify 執行 LogN次 * 總共 N個node) / Space Complexity:O(1) (As in-place method)
     https://www.youtube.com/watch?v=j-DqQcNPGbE
     
+    給一個 array 做 heap sort 一定得從 0 開始， 不是 datastructure_max_heap 可以自己設從 1 開始 
+    (因為 datastructure_max_heap 是自己寫insert函數，所以可以自己亂搞)
     
     小問題：
         heap_sort 一樣是希望輸出 可以由小到大，但是教科書的作法都是先將array 變成 max_heap，

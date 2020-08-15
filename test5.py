@@ -31,7 +31,7 @@ def heapsort(array):
 
 
 """
-    root 重 1 開始好惹
+    root 重開始好惹
 """
 array = [61, 52, 43, 34, 25, 16]
 heapsort(array)
