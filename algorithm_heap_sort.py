@@ -13,7 +13,7 @@ def heapify2(array, length, index):
         heapify2(array, length, max)
 
 
-def build_heap(array):
+def build_heap(array):  # build_heap 的 time complexity = O(LogN)
     last_node = len(array) - 1
     parent = (last_node - 1) // 2
     for i in range(parent, -1, -1):
@@ -22,9 +22,9 @@ def build_heap(array):
 
 def heap_sort2(array):
     length = len(array)
-    build_heap(array)
+    build_heap(array)   # O(LogN)
 
-    for i in range(length - 1, -1, -1):
+    for i in range(length - 1, -1, -1):     # O(NLogN)
         array[i], array[0] = array[0], array[i]
         heapify2(array, i, 0)
 
@@ -41,5 +41,12 @@ print(input2)
     這裡我們的起始點皆為 0, 有一些演算法會用1當起點
     Time Complexity: O(NLogN) (heapify 執行 LogN次 * 總共 N個node) / Space Complexity:O(1) (As in-place method)
     https://www.youtube.com/watch?v=j-DqQcNPGbE
+    
+    
+    小問題：
+        heap_sort 一樣是希望輸出 可以由小到大，但是教科書的作法都是先將array 變成 max_heap，
+        然後藉由root 和 最後一個對調，對調後將總長-1(排除最大)，然後做heapify 
+        可是為什麼不直接將heapify 寫成 min 版本的heapify 呢？
+        
     
 """

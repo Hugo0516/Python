@@ -15,7 +15,7 @@ class Max_Heap:
 
         curr = self.curr
         parent = curr // 2
-        while self.heap[curr] > self.heap[parent]:
+        while self.heap[curr] > self.heap[parent]:  # O(LogN)
             self.heap[curr], self.heap[parent] = self.heap[parent], self.heap[curr]
             curr = parent
             parent = curr // 2
@@ -26,7 +26,7 @@ class Max_Heap:
         item = self.heap[self.front]
         self.heap[self.front] = self.heap[self.curr]
         self.curr -= 1
-        self.heapify(self.front)
+        self.heapify(self.front)    # O(LogN)
 
         return item
 
@@ -49,6 +49,13 @@ class Max_Heap:
         if temp != start:
             self.heapify(temp)
 
+"""
+    看這個版本就好,
+    heap 重點：insert 要注意有沒有超過 array 的 maxsize
+    extract 要注意把 root 拿掉後，會用最下面來補, 補完大小亂掉了, 所以要用 heapify 去重新恢復大小順序
+    
+    Both insert and extract : Time Complexity : O(LogN)
+"""
 
 if __name__ == "__main__":
     max_heap = Max_Heap(15)
@@ -66,5 +73,6 @@ if __name__ == "__main__":
         print(max_heap.heap[i], end=' ')
     print('\n')
     max_heap.extract()
+
     for i in range(1, max_heap.curr + 1):
         print(max_heap.heap[i], end=' ')
