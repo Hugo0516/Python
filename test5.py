@@ -39,7 +39,7 @@ def quicksort(array, left, right):
     key = array[left]
 
     while i != j:
-        
+
 
         while array[i] <= key and i < j:
             i += 1
@@ -66,3 +66,6 @@ print(array)
 array_2 = [61, 52, 43, 34, 25, 16]
 quicksort(array_2, 0, 5)
 print(array_2)
+
+graph = [[] for i in range(3)]
+print(graph)

@@ -53,10 +53,9 @@ class Graph:
         conected_component = []
         for index in range(self.nums):  # 就這一行跟DFS 的觀念有出入！！！！！ 注意！！
             if index not in visited:
-                temp = []
+                temp = []   # 這個也很重要, 要確保新的乾淨的[]
                 conected_component.append(self.dfs2(graph, index, visited, temp))
         return conected_component
-
 
 
 if __name__ == "__main__":
@@ -78,6 +77,19 @@ if __name__ == "__main__":
     Time complexity of above solution is O(V + E) as it does simple DFS for given graph.
     
     這一題的思路跟資結課本可以說是99% 一樣，而DFS 也是跟這個很像
+    
+    思路：為何要54行?
+    假設現在圖： 0-1-2-3 連在一起, 4-5-6-7連在一起 (所以有兩個forest)
+    那麼54行低一次跑的時候發現 0不在 visited 裡面, 所以對0做dfs, 做完後會發現 0-1-2-3連在一起, 並且 0,1,2,3皆變成 visited
+    所以之後1-2-3不用再重做DFS, 所以到4的時候又要做DFS, 結果發現4-5-6-7連在一起這樣
+    
+    注意：graph 表示方法：
+    method1 : graph = { '0':[....],
+                        '1':[....],
+                            .....
+                                    }
+    method 2: [[...], [.....], [,,,,,]]
+    總結！！！！！！！！ List 和 graph裡面都必須包 List!!!!!!!!!!!!
     
     https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
 """
