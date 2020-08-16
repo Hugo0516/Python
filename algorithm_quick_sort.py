@@ -43,6 +43,7 @@ def quicksort(data, left, right):  # 輸入資料，和從兩邊開始的位置
     j = right  # 右邊的代理人
     key = data[left]  # 基準點
 
+    # 幹，這個寫法一定要 判斷 j的部份先寫？？？？？？？
     while i != j:
         while data[j] > key and i < j:  # 從右邊開始找，找比基準點小的值!!!!
             j -= 1

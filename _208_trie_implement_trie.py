@@ -2,7 +2,7 @@ class Trie:
     class TrieNode(object):
         def __init__(self):
             self.is_word = False
-            self.children = [None] * 26     # 創建太多空對象 浪費資源
+            self.children = [None] * 26  # 創建太多空對象 浪費資源
 
     def __init__(self):
         """
@@ -38,7 +38,7 @@ class Trie:
     def find(self, prefix):
         p = self.root
         for c in prefix:
-            index = ord(c) - ord('a')   # 轉型浪費資源
+            index = ord(c) - ord('a')  # 轉型浪費資源
             if not p.children[index]: return None
             p = p.children[index]
         return p
@@ -73,7 +73,9 @@ class Trie2(object):
     def find(self, prefix):
         p = self.root
         for c in prefix:
-            if c not in p: return None
+            if c not in p:
+                return None
+
             p = p[c]
         return p
 
@@ -84,7 +86,7 @@ class Trie2(object):
     Space Complexity : O(prefix) or O(n*l^2)(worst case, 每個字母都不重複)
     
     Method 1: 注意我們用到 inner class 的概念！！
-    Method 2: 比 Method 1 快, 
+    Method 2: 比 Method 1 快, 用到 Dictionary 概念 比較好, 詳見 datastructure_trie2
     
    http://zxi.mytechroad.com/blog/data-structure/leetcode-208-implement-trie-prefix-tree/ 
 """

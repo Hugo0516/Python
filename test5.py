@@ -30,9 +30,39 @@ def heapsort(array):
         heapify(array, i, 0)
 
 
+def quicksort(array, left, right):
+    if left >= right:
+        return None
+
+    i = left
+    j = right
+    key = array[left]
+
+    while i != j:
+        
+
+        while array[i] <= key and i < j:
+            i += 1
+
+        while array[j] > key and i < j:
+            j -= 1
+
+        if i < j:
+            array[i], array[j] = array[j], array[i]
+
+    array[left], array[i] = array[i], array[left]
+
+    quicksort(array, left, i - 1)
+    quicksort(array, i + 1, right)
+
+
 """
     root 重開始好惹
 """
 array = [61, 52, 43, 34, 25, 16]
 heapsort(array)
 print(array)
+
+array_2 = [61, 52, 43, 34, 25, 16]
+quicksort(array_2, 0, 5)
+print(array_2)
