@@ -38,6 +38,14 @@ class Solution:
             words += self._findWordsFromNode(node.children[char], prefix + char)
         return words
 
+"""
+trie = {}
+{} => { 'd':{}, 'c':{}}
+=> {'d':{ 'o':{}, 'a':{} }, 'c': { 'a': {} } }
+=> {'d':{ 'o':{ 'g': {}, 'o':{}, 'd':{} }, 'a':{ 'r':{} } }, 'c': { 'a': { 't':{} } } }
+=> {'d':{ 'o':{ 'g': {}, 'o':{ 'r':{} }, 'd':{ 'g':{} } }, 'a':{ 'r':{ 'k':{} } } }, 'c': { 'a': { 't':{} } } }
+=> {'d':{ 'o':{ 'g': {}, 'o':{ 'r':{} }, 'd':{ 'g':{ 'e':{} } } }, 'a':{ 'r':{ 'k':{} } } }, 'c': { 'a': { 't':{} } } }
+"""
 
 s = Solution()
 s.build(['dog', 'dark', 'cat', 'door', 'dodge'])
