@@ -7,3 +7,29 @@ class ListNode:
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
+        fast, slow = head, head
+
+        while fast and fast.next:
+            fast, slow = fast.next.next, slow.next
+            if fast == slow:
+                return True
+
+        return False
+
+
+"""
+    use fast, flow pointer to solve
+    
+    https://www.youtube.com/watch?v=9SD2ccDW5CY
+"""
+
+if __name__ == '__main__':
+    demo = Solution()
+    root = ListNode(3)
+    node_2 = ListNode(2)
+    node_3 = ListNode(0)
+    node_4 = ListNode(-4)
+    root.next = node_2
+    node_2.next = node_3
+    node_3.next = node_4
+    print(demo.detectCycle(root))
