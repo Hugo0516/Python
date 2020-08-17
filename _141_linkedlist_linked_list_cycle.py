@@ -6,7 +6,15 @@ class ListNode:
 
 
 class Solution:
-    def detectCycle(self, head: ListNode) -> ListNode:
+    def hasCycle(self, head: ListNode) -> ListNode:
+        fast, slow = head, head
+
+        while fast and fast.next:
+            fast, slow = fast.next.next, slow.next
+            if fast == slow:
+                return True
+
+        return False
 
 
 """
@@ -24,4 +32,4 @@ if __name__ == '__main__':
     root.next = node_2
     node_2.next = node_3
     node_3.next = node_4
-    print(demo.detectCycle(root))
+    print(demo.hasCycle(root))
