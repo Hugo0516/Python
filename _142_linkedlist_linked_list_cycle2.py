@@ -8,16 +8,20 @@ class ListNode:
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
         slow, fast = head, head
+
         while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
             if fast == slow:
                 break
-        if not fast or not fast.next:   # 記住,要確定上面break不是因為他為None
+
+        if not fast or not fast.next:  # 記住,要確定可以走到這一行 不是因為fast = None 所以跳出
             return None
+
         while head != slow:
             slow = slow.next
             head = head.next
+
         return head
 
 
