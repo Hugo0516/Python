@@ -13,7 +13,7 @@ class Solution:
             slow = slow.next
             if fast == slow:
                 break
-        if not fast or not fast.next:
+        if not fast or not fast.next:   # 記住,要確定上面break不是因為他為None
             return None
         while head != slow:
             slow = slow.next
@@ -29,6 +29,8 @@ class Solution:
     
     觀念：
     https://www.youtube.com/watch?v=UkKBPGt5Nok&t=175s
+    看這裡面的推導
+    --------
     https://www.youtube.com/watch?v=9SD2ccDW5CY
 """
 
