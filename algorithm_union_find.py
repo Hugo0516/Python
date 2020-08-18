@@ -1,9 +1,5 @@
-"""
-Author: Huahua
-"""
-
-
 class UnionFindSet:
+
     def __init__(self, n):
         self._parents = [i for i in range(n + 1)]  # 一開始每個結點的 parent 都為他自己 => 代表每一個點都是獨立的node
         # 也就是說 假如n = 5, 那麼現在就有5個forest的感覺,且每個forest就是只有一個node(所以此node也等於此樹的root)

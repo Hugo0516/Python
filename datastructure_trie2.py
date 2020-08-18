@@ -83,4 +83,4 @@ if __name__ == '__main__':
     print(trie.search("app"))  # returns true
 
     print('\n')
-    print(trie.autocomplete("ap"))  # return ['apple', 'app']
+    print(trie.autocomplete("ap"))  # return ['app', 'apple']

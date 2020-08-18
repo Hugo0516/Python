@@ -30,6 +30,7 @@ class Solution:
 
 # Method 2
 class UnionFindSet:
+
     def __init__(self, n):
         self._parents = [i for i in range(n + 1)]  # 一開始每個結點的 parent 都為他自己 => 代表每一個點都是獨立的node
         # 也就是說 假如n = 5, 那麼現在就有5個forest的感覺,且每個forest就是只有一個node(所以此node也等於此樹的root)
@@ -65,8 +66,10 @@ class Solution2:
                 return edge
         return None
 
+
 # 不能跑 我不知道錯在哪
 class Solution3:
+
     def findRedundantConnection3(self, edges):
 
         def dfs(graph, node, visited, temp):
@@ -95,6 +98,24 @@ class Solution3:
         return connected_component[-1]
 
 
+# 這個會錯
+# [[3,4],[1,2],[2,4],[3,5],[2,5]]
+# correct answer: [2,5]
+# however this would output: [2,4]
+class Solution4:
+    def test(self, edges):
+        visited = set()
+
+        for edge in edges:
+            if edge[0] in visited and edge[1] in visited:
+                return [edge[0], edge[1]]
+            else:
+                if not edge[0] in visited:
+                    visited.add(edge[0])
+                if not edge[1] in visited:
+                    visited.add(edge[1])
+
+
 """
     Input: [[1,2], [1,3], [2,3]]
     Output: [2,3]
@@ -120,8 +141,13 @@ if __name__ == '__main__':
     demo_1 = Solution()
     demo_2 = Solution2()
     demo_3 = Solution3()
+    demo_4 = Solution4()
     input_1 = [[1, 2], [1, 3], [2, 3]]
     input_2 = [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]
-    print(demo_1.findRedundantConnection(input_1))
     print(demo_2.findRedundantConnection2(input_2))
-    print(demo_3.findRedundantConnection3(input_1))
+
+
+    # print(demo_1.findRedundantConnection(input_1))
+    # print(demo_4.test(input_2))
+
+    # print(demo_3.findRedundantConnection3(input_1))
