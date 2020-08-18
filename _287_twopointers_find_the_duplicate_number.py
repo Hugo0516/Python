@@ -28,7 +28,7 @@ class Solution:
                 l = mid + 1
             else:
                 r = mid
-        return r
+        return r    # 也可以 return l, 因為此時 r=l !!!!!!!!!
 
 
 """
