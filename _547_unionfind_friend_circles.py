@@ -9,7 +9,7 @@ class Solution:
         #         if M[curr][i] == 1:
         #             M[curr][i] = M[i][curr] = 0
         #             dfs(M, i, n)
-
+        #
         # n = len(M)
         # ans = 0
         # for i in range(n):
@@ -19,24 +19,39 @@ class Solution:
         #
         # return ans
 
+        # 這自己想的是錯的
+        # def test(self, M):
+        #     ans = 0
+        #     for i in range(len(M)):
+        #         if M[i][i] == 1:
+        #             M[i][i] = 0
+        #             ans += 1
+        #             for j in range(i, len(M)):
+        #                 if M[i][j] == 1:
+        #                     M[i][j] = 0
+        #                     M[j][i] = 0
+        #                     M[j][j] = 0
+        #
+        #     return ans
+
         visited = set()
-        connected_component = []
+        ans = 0
+        n = len(M)
 
-        def dfs(graph, node, visited, temp):
-            temp.append(node)
+        def dfs(graph, node, n, visited):
+            if node in visited:
+                return
             visited.add(node)
-            for neightbor in graph[node]:
-                if neightbor not in visited:
-                    dfs(graph, neightbor, visited, temp)
-            return temp
+            for i in range(n):
+                if graph[node][i] and not i in visited:
+                    dfs(graph, i, n, visited)
 
-        for i in range(len(M)):
+        for i in range(n):
             if i not in visited:
-                temp = []
-                connected_component.append(dfs(M, i, visited, temp))
+                dfs(M, i, n, visited)
+                ans += 1
+        return ans
 
-        # print(connected_component)
-        return len(connected_component)
 
 """
     Input:
@@ -47,7 +62,10 @@ class Solution:
     Explanation:The 0th and 1st students are direct friends, so they are in a friend circle.
     The 2nd student himself is in a friend circle. So return 2.
     
-    我覺得我寫的方法比較好
+    這一題可以用 DFS / Union Find 去解
+    直覺會想到 DFS
+    
+    這一題和 Leetcode 200 一樣的思路
     
     https://zxi.mytechroad.com/blog/graph/leetcode-547-friend-circles/
 """
@@ -66,3 +84,10 @@ if __name__ == '__main__':
     # for row in input_1:
     #     for i in row:
     #         print(i, row)
+    input_3 = [[1, 1, 0],
+               [1, 1, 0],
+               [0, 0, 1]]
+    # print(demo.test(input_3))
+
+    input_4 = [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]
+    # print(demo.test(input_4))
