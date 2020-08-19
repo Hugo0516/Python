@@ -46,10 +46,11 @@ def DFS(graph, s):
 
 # DFS(graph, 'a')
 # print('')
-DFS(graph2, 'A')
+print("Iteration version")
+# DFS(graph2, 'A')
 print('')
 DFS(graph3, 0)
-print('')
+print('\n')
 
 
 def DFS1(graph, s, queue=[]):
@@ -85,6 +86,17 @@ graph2 = {
     'F': []
 }
 
+graph3 = {
+    0: [1, 2],
+    1: [0, 3, 4],
+    2: [0, 5, 6],
+    3: [1, 7],
+    4: [1, 7],
+    5: [2, 7],
+    6: [2, 7],
+    7: [3, 4, 5, 6]
+}
+
 visited = set()  # Set to keep track of visited nodes.
 i = 1
 
@@ -110,14 +122,16 @@ def dfs3(graph, node, visited, res):
 
 # Driver Code
 # dfs2(visited, graph2, 'A', i)
-dfs2(visited, graph3, 0)
-visited = set()
-print('\n')
+# dfs2(visited, graph3, 0)
+# visited = set()
+# print('\n')
 
+print("Recursion version")
 res = []
 visited = set()
-dfs3(graph2, 'A', visited, res)
-print('\n')
+# dfs3(graph2, 'A', visited, res)
+dfs3(graph3, 0, visited, res)
+print('')
 print(res)
 
 """

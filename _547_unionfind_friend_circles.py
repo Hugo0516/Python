@@ -4,36 +4,6 @@ from typing import List
 class Solution:
     def findCircleNum(self, M: List[List[int]]) -> int:
 
-        # def dfs(M, curr, n):
-        #     for i in range(n):
-        #         if M[curr][i] == 1:
-        #             M[curr][i] = M[i][curr] = 0
-        #             dfs(M, i, n)
-        #
-        # n = len(M)
-        # ans = 0
-        # for i in range(n):
-        #     if M[i][i] == 1:
-        #         ans += 1
-        #         dfs(M, i, n)
-        #
-        # return ans
-
-        # 這自己想的是錯的
-        # def test(self, M):
-        #     ans = 0
-        #     for i in range(len(M)):
-        #         if M[i][i] == 1:
-        #             M[i][i] = 0
-        #             ans += 1
-        #             for j in range(i, len(M)):
-        #                 if M[i][j] == 1:
-        #                     M[i][j] = 0
-        #                     M[j][i] = 0
-        #                     M[j][j] = 0
-        #
-        #     return ans
-
         visited = set()
         ans = 0
         n = len(M)
@@ -49,7 +19,7 @@ class Solution:
         for i in range(n):
             if i not in visited:
                 dfs(M, i, n, visited)
-                ans += 1
+                ans += 1    # 和 200很像
         return ans
 
 
@@ -64,6 +34,9 @@ class Solution:
     
     這一題可以用 DFS / Union Find 去解
     直覺會想到 DFS
+    
+    Time Complexity : O(n^2) / Space Complexity: O(n) (extra)
+    用 Union Find 的話 Time Complexity可以降到 O(n) !!!!!!!
     
     這一題和 Leetcode 200 一樣的思路
     

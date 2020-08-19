@@ -70,32 +70,63 @@ class Solution2:
 # 不能跑 我不知道錯在哪
 class Solution3:
 
+    def __init__(self):
+        self.res = None
+        self.flag = True
+
     def findRedundantConnection3(self, edges):
 
-        def dfs(graph, node, visited, temp):
+        def dfs(graph, node, pre, visited):
             visited.add(node)
-            temp.append(node)
             for neighbor in graph[node]:
-                if neighbor not in visited:
-                    dfs(graph, neighbor, visited, temp)
-            return temp
+                if self.flag is True:
+                    if neighbor not in visited:
+                        dfs(graph, neighbor, node, visited)
+                    else:  # neighbor already existed in visited
+                        if neighbor != pre:
+                            self.res = [pre, node]
+                            self.flag = False
 
-        graph = {}
-        for edge in edges:
-            if edge[0] in graph:
-                graph[edge[0]].append(edge[1])
+        # Create Graph
+        graph_dic = {}
+
+        for start, end in edges:
+            if start not in graph_dic:
+                graph_dic[start] = [end]
             else:
-                graph[edge[0]] = [edge[1]]
+                graph_dic[start].append(end)
+            if end not in graph_dic:
+                graph_dic[end] = [start]
+            else:
+                graph_dic[end].append(start)
 
-        connected_component = []
         visited = set()
-        for i in range(1, len(graph) + 1):
-            if i not in visited:
-                temp = []
-                connected_component.append(dfs(graph, i, visited, temp))
+        for i in range(1, len(graph_dic) + 1):
+            if self.flag is False:
+                break
 
-        print(connected_component)
-        return connected_component[-1]
+            if i not in visited:
+                dfs(graph_dic, i, -1, visited)
+
+        return self.res
+
+        # visited = set()
+        # ans = 0
+        # n = len(edges)
+        #
+        # def dfs(graph, node, n, visited):
+        #     if node in visited:
+        #         return
+        #     visited.add(node)
+        #     for i in range(n):
+        #         if graph[node][i] and not i in visited:
+        #             dfs(graph, i, n, visited)
+        #
+        # for i in range(n):
+        #     if i not in visited:
+        #         dfs(edges, i, n, visited)
+        #         ans += 1
+        # return ans
 
 
 # 這個會錯
@@ -133,6 +164,12 @@ class Solution4:
         
     此題和 737 為 Union Find 的經典應用
     
+    這題和 261 很像
+    
+    Time Complexity: DFS: O(n^2) / Union Find: O(nLogn) = O(n)(因為分攤)
+    
+    此題為 261 的變形題
+    
     Union Find 的應用題型 常常也可以用 DFS 來解！！！
     EX 737
 """
@@ -141,11 +178,10 @@ if __name__ == '__main__':
     demo_1 = Solution()
     demo_2 = Solution2()
     demo_3 = Solution3()
-    demo_4 = Solution4()
+    # demo_4 = Solution4()
     input_1 = [[1, 2], [1, 3], [2, 3]]
-    input_2 = [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]
-    print(demo_2.findRedundantConnection2(input_2))
-
+    input_2 = [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]  # expected [1, 4]
+    print(demo_3.findRedundantConnection3(input_2))
 
     # print(demo_1.findRedundantConnection(input_1))
     # print(demo_4.test(input_2))
