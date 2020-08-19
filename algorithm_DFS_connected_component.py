@@ -46,22 +46,26 @@ class Graph:
         temp.append(node)
         for neighbor in graph[node]:
             if neighbor not in visited:
-                temp = self.dfs2(graph, neighbor, visited, temp)
-        return temp
+                # temp = self.dfs2(graph, neighbor, visited, temp)
+                self.dfs2(graph, neighbor, visited, temp)
+        # return temp
 
     def connected(self, graph, visited):
         conected_component = []
         for index in range(self.nums):  # 就這一行跟DFS 的觀念有出入！！！！！ 注意！！
             if index not in visited:
                 temp = []   # 這個也很重要, 要確保新的乾淨的[]
-                conected_component.append(self.dfs2(graph, index, visited, temp))
+                # conected_component.append(self.dfs2(graph, index, visited, temp))
+                self.dfs2(graph, index, visited, temp)
+                conected_component.append(temp)
+                # conected_component += temp    # += 會以concatenate 的方式一一取出elements 然後再放入List裡面
         return conected_component
-
+# 我上面註解的地方 可以多想想, 看到底自己喜歡哪一種格式
 
 if __name__ == "__main__":
     # Create a graph given in the above diagram
     # 5 vertices numbered from 0 to 4
-    g = Graph(5);
+    g = Graph(5)
     g.addEdge(1, 0)
     g.addEdge(1, 2)
     g.addEdge(3, 4)

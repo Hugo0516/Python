@@ -36,8 +36,7 @@ def DFS(graph, s):
     seen.add(s)
     while len(stack) > 0:
         vertex = stack.pop()
-        nodes = graph[vertex]
-        for node in nodes:
+        for node in graph[vertex]:
             if node not in seen:
                 stack.append(node)
                 seen.add(node)

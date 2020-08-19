@@ -28,6 +28,10 @@ class UnionFindSet:
 
 
 """
+    Union Find可用於解決集合相關問題，如判斷某元素是否屬於集合、兩個元素是否屬同一集合、求解集合個數等
+    Weighting和Path compression兩種方法可以同時使用，這樣使得對N個元素進行M次Union Find操作的時間複雜度可以減少到(M+N)lgN。
+    因lgN隨N的增長變化很小，所以整體算法時間複雜度接近於線性的時間複雜度。
+    
     684 和 737 為此類型的經典應用！！！！！！
     
     Union Find 的題目好像雞戶都可以用 DFS 的概念下去解

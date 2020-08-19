@@ -43,15 +43,20 @@ class Solution:
             if not char in current.children:
                 return []
             current = current.children[char]
-        return self.completeWord(current, prefix)
-
-    def completeWord(self, node, prefix):
         words = []
-        if node.isWord:
-            words.append(prefix)        # append = +=
-        for char in node.children:
-            words += self.completeWord(node.children[char], prefix + char)
+        # return self.completeWord(current, prefix, words)
+        self.completeWord(current, prefix, words)
         return words
+
+    def completeWord(self, node, prefix, words):
+        # words = []
+        if node.isWord:
+            words.append(prefix)  # append != +=
+            # words += prefix   # += 會以concatenate 的方式一一取出elements 然後再放入List裡面
+        for char in node.children:
+            # words.append(self.completeWord(node.children[char], prefix + char, words))
+            self.completeWord(node.children[char], prefix + char, words)
+        # return words
 
     def _findWordsFromNode(self, prefix):
         curr = self.trie
