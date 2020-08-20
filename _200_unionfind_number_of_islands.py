@@ -4,7 +4,7 @@ from typing import List
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
 
-        if not grid or len(grid) == 0 or len(grid[0]) == 0:
+        if not grid or len(grid) == 0 or len(grid[0]) == 0:     # 注意這些條件的順序
             return 0
 
         m = len(grid)

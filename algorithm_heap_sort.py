@@ -15,7 +15,7 @@ def heapify2(array, length, index):
 
 def build_heap(array):  # build_heap 的 time complexity = O(LogN)
     last_node = len(array) - 1
-    parent = (last_node - 1) // 2
+    parent = (last_node - 1) // 2   # 注意！！！！！
     for i in range(parent, -1, -1):
         heapify2(array, len(array)-1, i)    # 不確定這裡是 len(array) or len(array)-1
 
