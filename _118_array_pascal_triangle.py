@@ -15,7 +15,8 @@ class Solution:
 
         return res
 """
-https://www.youtube.com/watch?v=gq4t3cwMQbs
+    TIME COMPLEXITY: O(N^2) / SPACE COMPLEXITY:O(N^2) (1+...+N)(我不確定)
+    https://www.youtube.com/watch?v=gq4t3cwMQbs
 """
 
 if __name__ == '__main__':
