@@ -41,6 +41,10 @@ Constructed binary tree is
 	   2   3 
 	  / \ 
      4   5 
+        / \
+       6   7
+            \
+              8
      
      4->2->5->1->3
 """
@@ -50,6 +54,9 @@ root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
+root.left.right.left = Node(6)
+root.left.right.right = Node(7)
+root.left.right.right.right = Node(8)
 
 inorderIterative(root)
 print()

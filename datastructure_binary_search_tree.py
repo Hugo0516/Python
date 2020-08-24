@@ -22,6 +22,63 @@ class Node:
         else:
             self.data = data
 
+    def remove(self, pre, data):
+        if self is None:
+            return None
+        else:
+            if data < self.data:
+                if self.left is None:
+                    return None
+                else:
+                    self.left.remove(self, data)
+
+            elif data > self.data:
+                if self.right is None:
+                    return None
+                else:
+                    self.right.remove(self, data)
+
+            elif self.left and self.right is not None:
+                pre, tmp = self, self.right
+                while tmp.left:
+                    pre, tmp = tmp, tmp.left
+                if tmp is self.right:
+                    self.data = tmp.data
+                    self.right = None
+                else:
+                    self.data = tmp.data
+                    pre.left = None
+
+            elif self.left and self.right is None:
+                if pre.left is self:
+                    pre.left = None
+                elif pre.right is self:
+                    pre.right = None
+            else:
+                if self.left is None:
+                    pre, tmp = self, self.right
+                    while tmp.left:
+                        pre, tmp = tmp, tmp.left
+                    if tmp is self.right:
+                        self.data = tmp.data
+                        self.right = None
+                    else:
+                        self.data = tmp.data
+                        pre.left = None
+                else:
+                    pre, tmp = self, self.left
+                    while tmp.right:
+                        pre, tmp = tmp, tmp.right
+
+                    if tmp is self.left:
+                        self.data = tmp.data
+                        self.left = None
+                    else:
+                        self.data = tmp.data
+                        pre.right = None
+
+
+
     # findval method to compare the value with nodes
     def findval(self, lkpval):
         if self.data is None:
@@ -70,6 +127,10 @@ print(root.iter_search(3))
 print('\n')
 
 root.PrintTree()
+
+root2 = Node(None)
+root2.iter_search(11)
+
 
 """
     Binary search tree, 不一定是 complete binary tree 哦

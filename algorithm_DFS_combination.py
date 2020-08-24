@@ -20,3 +20,7 @@ print(ans_1)
 ans_2 = []
 combination([1, 2, 3], 0, 2, 0, [], ans_2)
 print(ans_2)
+
+ans_3 = []
+combination([1, 2, 3], 0, 1, 0, [], ans_3)
+print(ans_3)
