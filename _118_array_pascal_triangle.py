@@ -15,6 +15,15 @@ class Solution:
 
         return res
 """
+    Input: 5
+    Output:
+    [
+         [1],
+        [1,1],
+       [1,2,1],
+      [1,3,3,1],
+     [1,4,6,4,1]
+    ]
     TIME COMPLEXITY: O(N^2) / SPACE COMPLEXITY:O(N^2) (1+...+N)(我不確定)
     https://www.youtube.com/watch?v=gq4t3cwMQbs
 """
