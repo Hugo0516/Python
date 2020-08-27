@@ -6,7 +6,7 @@ class Solution:
         res = [1] + [0] * rowIndex
 
         for i in range(rowIndex):
-            res[0] = 1
+            # res[0] = 1
             for j in range(i + 1, 0, -1):   # 一樣是包含頭不包含尾
                 res[j] = res[j] + res[j - 1]
 
