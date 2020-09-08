@@ -69,6 +69,7 @@ class Solution:
 
         return res
 
+
 class Solution2:
     def __init__(self):
         self.res = []
@@ -79,7 +80,6 @@ class Solution2:
 
         return self.res
 
-
     def helper(self, root: TreeNode, sum: int, temp: List):
         if root is None:
             return
@@ -89,7 +89,7 @@ class Solution2:
         if root.left is None and root.right is None and root.val == sum:
             self.res.append(temp)
         else:
-            self.helper(root.left, sum-root.val, temp) or self.helper(root.right, sum-root.val, temp)
+            self.helper(root.left, sum - root.val, temp) or self.helper(root.right, sum - root.val, temp)
 
 
 """
@@ -132,7 +132,6 @@ if __name__ == '__main__':
     # output_1 = demo.pathSum(root_1, 22)
     # output_1 = demo.pathSum3(root_1, 22)
     # print(output_1)
-
 
     demo_2 = Solution2()
     output_2 = demo_2.pathSum(root_1, 22)
