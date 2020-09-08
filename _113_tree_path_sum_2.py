@@ -69,6 +69,29 @@ class Solution:
 
         return res
 
+class Solution2:
+    def __init__(self):
+        self.res = []
+
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        temp = []
+        self.helper(root, sum, temp)
+
+        return self.res
+
+
+    def helper(self, root: TreeNode, sum: int, temp: List):
+        if root is None:
+            return
+
+        temp.append(root.val)
+
+        if root.left is None and root.right is None and root.val == sum:
+            self.res.append(temp)
+        else:
+            self.helper(root.left, sum-root.val, temp) or self.helper(root.right, sum-root.val, temp)
+
+
 """
     可以和 39, 40 比較
     
@@ -86,6 +109,9 @@ class Solution:
     但是！！！！ 如果是用path[:], 那麼回到11那點時, path = [5, 4, 11] 接下來+[2] = [5, 4, 11, 2] 這樣才正確!!!!!
     
     https://blog.csdn.net/fuxuemingzhu/java/article/details/80779723
+    
+    
+    class Solution2 才是好方法, 可以參考 112題，用一樣的絲路下去寫，然後要注意shallow copy!!
 """
 
 if __name__ == '__main__':
@@ -104,5 +130,10 @@ if __name__ == '__main__':
     root_1.right.right.right = TreeNode(1)
 
     # output_1 = demo.pathSum(root_1, 22)
-    output_1 = demo.pathSum3(root_1, 22)
-    print(output_1)
+    # output_1 = demo.pathSum3(root_1, 22)
+    # print(output_1)
+
+
+    demo_2 = Solution2()
+    output_2 = demo_2.pathSum(root_1, 22)
+    print(output_2)

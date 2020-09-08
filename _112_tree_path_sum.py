@@ -38,6 +38,15 @@ class Solution:
             right_flag = self.dfs2(root.right, target, res, path + [root.right.val])
         return left_flag or right_flag
 
+    def hasPathSum3(self, root, sum):
+        if root is None:
+            return False
+
+        if root.left is None and root.right is None and root.val == sum:
+            return True
+        else:
+            return self.hasPathSum3(root.left, sum - root.val) or self.hasPathSum3(root.right, sum - root.val)
+
 
 """
     法ㄧ:
@@ -55,6 +64,10 @@ class Solution:
     
     請見以下解說:
     https://blog.csdn.net/fuxuemingzhu/java/article/details/71715810
+    
+    
+    法三比較好！！！ 非常直覺
+    https://www.youtube.com/watch?v=2PjOR354ASs
 """
 
 if __name__ == '__main__':
