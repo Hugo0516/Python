@@ -42,7 +42,8 @@ class Solution:
     解題思路：
             方法一： recursion
             
-            方法二: 用 inorder traversal + 比大小 and 不能重複
+            方法二: 用 inorder traversal + 比大小 and 不能重複(這題題目的BST tree 一開始就不打算給重複字)
+            (所以我們才可以使用此方法)
             t.ly/xkL6
             https://www.youtube.com/watch?v=Jq0Wk9xeQ0U
             
