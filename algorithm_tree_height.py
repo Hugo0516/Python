@@ -35,10 +35,12 @@ def treeHeight(root):
 
 
 def height(node):
+    # the height of leaf would be 1
     if node is None:
         return 0
-    else:
+
         # Compute the height of each subtree
+    else:
         lheight = height(node.left)
         rheight = height(node.right)
 
@@ -50,12 +52,26 @@ def height(node):
 
 
 def height2(root):
+    # the height of the leaf would be 0
     if not root:  # 左子樹 or 右子樹其中一個不平衡就可以返回false, 不用浪費時間
         return -1  # 也可以從 0 開始, 看你想要怎樣
+
     l = height2(root.left)  # 當前node的左子樹 的高度
     r = height2(root.right)
+
     return max(l, r) + 1
 
+
+"""
+                    1
+                  /  \
+                2     3 
+              /  \
+            4     5
+          /  \
+         6    7 
+              
+"""
 
 root2 = TreeNode(1)
 root2.left = TreeNode(2)

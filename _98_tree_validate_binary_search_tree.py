@@ -48,7 +48,8 @@ class Solution:
             
             !!! 藉由這一題可以知道, BST 可以為空(連"根"都沒有)
             
-            Both method's time complexity and space complexity = O(n)
+            Both method's time complexity = O(n)
+            Space Complexity: O(h)
 """
 
 if __name__ == "__main__":

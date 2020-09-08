@@ -84,8 +84,24 @@ if __name__ == '__main__':
     root_3.next = root_4
     root_4.next = root_5
 
+    temp = root
+    temp2 = root_2
+    temp3 = root_3
+    temp4 = root_4
+    temp5 = root_5
+
     output = demo.reverseBetween2(root, 1, 3)
 
     while output:
         print(output.val, end=' ')
         output = output.next
+
+    print("")
+
+    while root:
+        print(root.val, end=' ')
+        root = root.next
+
+    print("")
+
+    print(root)

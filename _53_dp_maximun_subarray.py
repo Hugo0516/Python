@@ -3,7 +3,9 @@ from typing import List
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        if not nums: return 0
+        if not nums:
+            return 0
+
         N = len(nums)
         cur, prev = 0, 0
         res = float("-inf")
