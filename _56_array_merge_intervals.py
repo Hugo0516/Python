@@ -5,7 +5,7 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         ans = []
         for interval in sorted(intervals, key=lambda x: x[0]):  # sorted()會保留原List, 而是copy一個之後再list出來
-            if not ans or interval[0] > ans[-1][1]:
+            if not ans or interval[0] > ans[-1][1]:     # 乾 不能寫 res is None 不知道哪裡錯
                 ans.append(interval)
                 print(ans[-1][1])
             else:
