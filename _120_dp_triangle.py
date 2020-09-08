@@ -14,6 +14,9 @@ class Solution:
 
 
 """
+        When we saw key words: minimum => think about greedy strategy or dynamic programming
+        => apparently, here we have to choose dynamic programming
+        
         dp題目 可以從起始看到結尾推出來, 或是像這一題一樣從結尾推回起始!!!!
 
         這題要注意, row 跟 column 都為1~4, 但是裡面List的起始位置為0 !!!
