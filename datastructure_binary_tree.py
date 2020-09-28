@@ -10,7 +10,7 @@ class Node:
         # Compare the new value with the parent node
         # 這裡的寫的分配方式跟 binary search tree 一樣，但是如果是 binary tree的話其實不用那麼嚴格
         if self.data:
-            if data < self.data:
+            if data <= self.data:
                 if self.left is None:
                     self.left = Node(data)
                 else:
