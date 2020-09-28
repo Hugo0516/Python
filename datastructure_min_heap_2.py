@@ -38,14 +38,13 @@ class Heap:
         temp = start
 
         if left_child < self.curr and self.heap[left_child] < self.heap[temp]:
-            self.heap[left_child], self.heap[temp] = self.heap[temp], self.heap[left_child]
             temp = left_child
 
         if right_child < self.curr and self.heap[right_child] < self.heap[temp]:
-            self.heap[right_child], self.heap[temp] = self.heap[temp], self.heap[right_child]
             temp = right_child
 
         if temp != start:
+            self.heap[temp], self.heap[start] = self.heap[start], self.heap[temp]
             self.heapify(temp)
 
 

@@ -34,19 +34,20 @@ class Max_Heap:
         if start >= self.curr:
             return
 
-        left_child = self.front * 2
-        right_child = self.front * 2 + 1
+        left_child = start * 2
+        right_child = start * 2 + 1
         temp = start
 
-        if left_child < self.curr and self.heap[left_child] > temp:
-            self.heap[left_child], self.heap[self.front] = self.heap[self.front], self.heap[left_child]
+        if left_child < self.curr and self.heap[left_child] > self.heap[temp]:
+            # self.heap[left_child], self.heap[self.front] = self.heap[self.front], self.heap[left_child]
             temp = left_child
 
-        if right_child < self.curr and self.heap[right_child] > temp:
-            self.heap[right_child], self.heap[self.front] = self.heap[self.front], self.heap[right_child]
-            tmp = right_child
+        if right_child < self.curr and self.heap[right_child] > self.heap[temp]:
+            # self.heap[right_child], self.heap[self.front] = self.heap[self.front], self.heap[right_child]
+            temp = right_child
 
         if temp != start:
+            self.heap[temp], self.heap[start] = self.heap[start], self.heap[temp]
             self.heapify(temp)
 
 """
