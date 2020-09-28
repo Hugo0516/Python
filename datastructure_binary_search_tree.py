@@ -102,8 +102,8 @@ class Node:
             if value == self.data:
                 return str(self.data) + " is found"
             if value < self.data:
-                self = self.left
-            else:
+                self = self.left    # 這行原本會覺得怪,後來搞懂了, 只self = self.left(只是把self重新參考至self.left而已)
+            else:                   # 所以本來就不會改變root的起始值
                 self = self.right
         return None
 
@@ -120,16 +120,25 @@ root = Node(12)
 root.insert(6)
 root.insert(14)
 root.insert(12)
+root.insert(11)
+root.insert(7)
+root.insert(13)
+root.insert(15)
 
 print(root.findval(7))
 print(root.findval(14))
+
+print(root.data)
+
 print(root.iter_search(3))
+print(root.data)
+
 print('\n')
 
 root.PrintTree()
 
-root2 = Node(None)
-root2.iter_search(11)
+# root2 = Node(None)
+# root2.iter_search(11)
 
 
 """
