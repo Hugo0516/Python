@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, children, isWord):
+    def __init__(self, children, isWord):   # node = ({}, boolean)
         self.children = children
         self.isWord = isWord
 
@@ -53,6 +53,7 @@ class Solution:
         if node.isWord:
             words.append(prefix)  # append != +=
             # words += prefix   # += 會以concatenate 的方式一一取出elements 然後再放入List裡面
+            # words += prefix
         for char in node.children:
             # words.append(self.completeWord(node.children[char], prefix + char, words))
             self.completeWord(node.children[char], prefix + char, words)
