@@ -31,7 +31,7 @@ print(bsearch(list, 11), '\n')
 
 # binary search recursion edition:
 def bsearch2(list, idx0, idxn, val):
-    if (idxn < idx0):
+    if idxn < idx0:     # 這裡改成 <= 會錯誤
         return None
     else:
         midval = idx0 + ((idxn - idx0) // 2)
@@ -47,7 +47,7 @@ def bsearch2(list, idx0, idxn, val):
 
 list = [8, 11, 24, 56, 88, 131]
 print(bsearch2(list, 0, 5, 56))
-print(bsearch2(list, 0, 5, 51))
+print(bsearch2(list, 0, 5, 131))
 
 """
     Divide and Conquer:

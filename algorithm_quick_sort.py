@@ -38,6 +38,7 @@ def partition(A, low, hi):  # 因為29, Time Complexity = O(N)
 def quicksort(data, left, right):  # 輸入資料，和從兩邊開始的位置
     if left >= right:  # 如果左邊大於右邊，就跳出function
         return
+    # 我不確定上面改成 > 會不會有差
 
     i = left  # 左邊的代理人
     j = right  # 右邊的代理人
