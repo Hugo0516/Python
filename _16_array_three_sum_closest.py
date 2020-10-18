@@ -14,7 +14,7 @@ class Solution:
             while left < right:
                 val = nums[i] + nums[left] + nums[right]
                 if abs(val - target) < abs(res - target):
-                    res = val   # 更新
+                    res = val  # 更新
                 if val == target:
                     return target
                 elif val < target:
@@ -22,6 +22,36 @@ class Solution:
                 else:
                     right -= 1
         return res
+
+    # 我自己寫的, 記住這個方法
+    # Time Complexity: O(n^2) / Space Complexity: O(n^2 / 2) (S.C我自己算的, 可知這複雜度不是很好= =)
+    def threeSumClosest2(self, nums: List[int], target: int) -> int:
+        # [-1, 2, 1, -4] => [-4, -1, 1, 2]
+        nums.sort()
+        ans = 999999
+        dict_1 = {}
+
+        for i in range(len(nums)):
+            left = i + 1
+            right = len(nums) - 1
+
+            while left < right:
+                temp = nums[i] + nums[left] + nums[right]
+                if temp == target:
+                    return temp
+                elif temp < target:
+                    res_1 = target - temp
+                    if res_1 < ans:
+                        ans = res_1
+                        dict_1[ans] = [nums[i], nums[left], nums[right]]
+                    left += 1
+                elif temp > target:
+                    res_1 = temp - target
+                    if res_1 < ans:
+                        ans = res_1
+                        dict_1[ans] = [nums[i], nums[left], nums[right]]
+                    right -= 1
+        return sum(dict_1[ans])
 
 
 """
@@ -41,3 +71,5 @@ if __name__ == '__main__':
     input_1 = [-1, 2, 1, -4]
     target = 1
     print(demo.threeSumClosest(input_1, target))
+
+    print(demo.threeSumClosest2([1, 1, 1, 0], -100))
