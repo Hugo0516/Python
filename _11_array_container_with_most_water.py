@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        ans, l, r = 0, 0, len(height) - 1   # l = left, r = right
+        ans, l, r = 0, 0, len(height) - 1  # l = left, r = right
 
         while l < r:
             h = min(height[l], height[r])
