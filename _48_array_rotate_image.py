@@ -16,6 +16,18 @@ class Solution:
                 for j in range(i):
                     matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
+    def rotate2(self, matrix: List[List[int]]) -> None:
+        h = len(matrix)  # 4
+        n = h - 1  # start from 0, so n = maximum = 3
+
+        for i in range(h // 2):
+            for j in range(i, n - i):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[n - j][i]
+                matrix[n - j][i] = matrix[n - i][n - j]
+                matrix[n - i][n - j] = matrix[j][n - i]
+                matrix[j][n - i] = tmp
+
 
 """
     解題方法
@@ -23,6 +35,16 @@ class Solution:
 
         需要注意的是上下翻轉的時候是rows-i-1，而不是rows-i。
     https://blog.csdn.net/fuxuemingzhu/java/article/details/79451733
+    
+    
+    (為 0 開始)
+    Michelle:
+    想：
+    1. 是否該 go through 每個點？ => 2 個 for loop => 不好 => high time complexity
+    2. 找規律
+    new row index => old column index
+    new column index => maximum - old row index
+    Michelle 的解法就是, 找到規律後 => 從最外面一圈, 然後慢慢把每一層撥開漸漸往內
 """
 
 if __name__ == '__main__':
@@ -34,4 +56,12 @@ if __name__ == '__main__':
     ]
 
     demo.rotate(input_1)
+    print(input_1)
+
+    input_1 = [[5, 1, 9, 11],
+               [2, 4, 8, 10],
+               [13, 3, 6, 7],
+               [15, 14, 12, 16]]
+
+    demo.rotate2(input_1)
     print(input_1)
