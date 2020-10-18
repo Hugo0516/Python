@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    def threeSum(self, nums: List[int]) -> int:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
         res = []
         nums.sort()  # sort 為了讓 nums 有規律 更有循環
@@ -25,7 +25,8 @@ class Solution:
                 if tmp == 0:
                     res.append([nums[i], nums[left], nums[right]])
                     while left + 1 < right and nums[left] == nums[left + 1]:
-                        # line 33, 理論上靠攏過後是要得到新的 unique 數組, 但是因為 left+1 == left, 所以代表不能只+1, 為了 unique 必續keep+1 until unique
+                        # line 34, 理論上靠攏過後是要得到新的 unique 數組, 但是因為 left+1 == left,
+                        # 所以代表不能只+1, 為了 unique 必續keep+1 until unique
                         left += 1
                     while left < right - 1 and nums[right] == nums[right - 1]:  # 右邊的推到更左邊
                         right -= 1
