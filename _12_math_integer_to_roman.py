@@ -13,7 +13,8 @@ class Solution:
 
 """
     解題思路：
-            想到可以對應到Dictionary 之類的方面去想
+            想到可以對應到 Dictionary 之類的方面去想
+            => but, 實際用 dictionary 會很麻煩, 所以用兩個 lsit 對應比較好
             Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
             Input: 1994 / Output: "MCMXCIV" / Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
             
