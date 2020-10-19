@@ -16,12 +16,13 @@ class Solution:
                 for j in range(i):
                     matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
+    # 記住這方法
     def rotate2(self, matrix: List[List[int]]) -> None:
         h = len(matrix)  # 4
         n = h - 1  # start from 0, so n = maximum = 3
 
-        for i in range(h // 2):
-            for j in range(i, n - i):
+        for i in range(h // 2):     # why h//2 => 可以看圖思考, 撥洋蔥 (用 6*6 matrix 想)
+            for j in range(i, n - i):   # 同上
                 tmp = matrix[i][j]
                 matrix[i][j] = matrix[n - j][i]
                 matrix[n - j][i] = matrix[n - i][n - j]
@@ -45,6 +46,7 @@ class Solution:
     new row index => old column index
     new column index => maximum - old row index
     Michelle 的解法就是, 找到規律後 => 從最外面一圈, 然後慢慢把每一層撥開漸漸往內
+    https://www.youtube.com/watch?v=OlO_bzYid
 """
 
 if __name__ == '__main__':
