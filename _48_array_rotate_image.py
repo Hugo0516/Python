@@ -17,6 +17,7 @@ class Solution:
                     matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
     # 記住這方法
+    # Time Complexity: O(n^2) / Space Complexity:O(1) ( 我自己想的 )
     def rotate2(self, matrix: List[List[int]]) -> None:
         h = len(matrix)  # 4
         n = h - 1  # start from 0, so n = maximum = 3
