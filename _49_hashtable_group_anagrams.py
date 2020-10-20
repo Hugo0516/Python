@@ -16,6 +16,10 @@ class Solution:
                     solution[regsort] = [reg]
         return solution.values()
 
+
+    # Do by myself
+    # Time Complexity: O(n * kLog(k)) / Space Complexity: O(nk) (I guess)
+    # line 35 => kLog(k), line 34 => n
     def groupAnagrams2(self, strs: List[str]) -> List[List[str]]:
         # Input: strs = ["eat","tea","tan","ate","nat","bat"]
         # Output: [["bat"],["nat","tan"],["ate","eat","tea"]]

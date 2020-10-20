@@ -32,7 +32,8 @@ class Solution:
         return 0
 
 """
-
+    Time Complexity: O(max(m, n))   => line 9 取最大！！！
+    Space Complexity: O(max(m, n)) => line 10, 11 取最大
 """
 
 if __name__ == '__main__':
