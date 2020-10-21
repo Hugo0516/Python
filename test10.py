@@ -17,3 +17,8 @@ print(collections.Counter(S), type(a))
 s2 = "ADOBECODEBANC"
 for i in s2:
     print(type(i), i)
+
+
+# 注意 用法
+print(dict_1['A'])
+print(dict_1.get('A'))
