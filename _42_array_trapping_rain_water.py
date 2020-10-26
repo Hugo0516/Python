@@ -45,6 +45,8 @@ class Solution:
                 right -= 1  # 移動右指針
         return res
 
+    # Time Complexity: O(n), Single iteration
+    # Space Complexity: O(1), Only constant space for left, right, left_max, right_max
     def trap3(self, height):
         n = len(height)
         if n == 0:
