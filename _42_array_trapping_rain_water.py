@@ -48,7 +48,7 @@ class Solution:
     def trap3(self, height):
         n = len(height)
         if n == 0:
-            return None
+            return 0
         l, r = 0, n - 1
         max_l, max_r = height[l], height[r]
         ans = 0
