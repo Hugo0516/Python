@@ -56,7 +56,7 @@ class Solution:
             if max_l < max_r:
                 ans += (max_l - height[l])
                 l += 1
-                max_l = max(max_l, height(l))
+                max_l = max(max_l, height[l])
             else:
                 ans += (max_r - height[r])
                 r -= 1
