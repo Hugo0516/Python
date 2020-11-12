@@ -1,4 +1,5 @@
 import collections
+from collections import deque
 from typing import List
 
 
@@ -39,6 +40,7 @@ class Solution:
             return res
 
         queue = collections.deque()
+        abc = deque()
         queue.append(root)
         while queue:
             level = []

@@ -88,11 +88,17 @@ print(arr)
     Mergesort 的缺點之一就是在合併子序列時，需要額外的空間依序插入排序資料 !!!!!!!!!!!!!!
     若是遞迴版本的 Mergesort 還需額外加上遞迴花費的 call stack 空間，因此額外空間複雜度為 O(n)+O(logn)=O(n)（以陣列實作）。
     
-    高效穩定：最佳、平均，與最差時間複雜度皆為 $O(n \log n) $。
+    高效穩定：最佳、平均，與最差時間複雜度皆為 O(n \log n)
     穩定排序：相同鍵值的元素，排序後相對位置不改變。
     非原地排序：除了資料本身，仍需額外花費儲存空間來排序。
     分治演算法：將主問題化作數個子問題，各個擊破。
     
     https://rust-algo.club/sorting/mergesort/index.html
     https://www.geeksforgeeks.org/python-program-for-merge-sort/
+    
+    Hua Hua:
+    merge sort, 若是用 array, 那麼我們在做的時候因為需要複製,
+    所以空間複雜度 = O(N)
+    對 linkedlist => 不用拷貝, => 若是用 recursive 來寫 => stack 深度 => O(LogK)
+    用 iteration => O(1)
 """

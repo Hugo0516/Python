@@ -121,6 +121,7 @@ class Solution2(object):
     therefore: method2 在跑測資比較快
     https://www.youtube.com/watch?v=RK5KaR_gbg8
     
+    [ 我之前的智障想法, 沒有考慮到說new_node.random = xxx 這時 xxx 可能根本還沒被建立, 所以會有錯誤 ]
     
     2020 / 11 / 1 review:
     這一題 copy question 和 clone 一個 graph 一樣！！！！

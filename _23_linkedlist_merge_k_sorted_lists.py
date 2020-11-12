@@ -1,6 +1,7 @@
 # Definition for singly-linked list.
 import heapq
 from typing import List
+from queue import PriorityQueue
 
 
 class ListNode:
@@ -10,53 +11,112 @@ class ListNode:
 
 
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        head = ListNode(-1)
-        move = head
-        while True:
-            curHead = ListNode(float('inf'))
-            curIndex = -1
-            for i, llist in enumerate(lists):
-                if llist and llist.val < curHead.val:
-                    curHead = llist
-                    curIndex = i
-            if curHead.val == float('inf'):
-                break
-            curNext = curHead.next
-            move.next = curHead
-            curHead.next = None
-            move = curHead
-            curHead = curNext
-            lists[curIndex] = curHead
+
+    # brute force
+    def mergeKLists1(self, lists):
+        self.nodes = []
+
+        head = point = ListNode(0)
+        for l in lists:
+            while l:
+                self.nodes.append(l.val)
+                l = l.next
+        for x in sorted(self.nodes):
+            point.next = ListNode(x)
+            point = point.next
         return head.next
 
-    def mergeKLists2(self, lists: List[ListNode]) -> ListNode:
-        dummy = ListNode(-1)
-        move = dummy
-        heap = []
-        heapq.heapify(heap)
-        [heapq.heappush(heap, (l.val, i)) for i, l in enumerate(lists) if l]
+    # priority queue method (min-heap)
+    def mergeKLists2(self, lists):
+        head = point = ListNode(0)
+        q = PriorityQueue()
+        for l in lists:
+            if l:
+                q.put((l.val, l))
+        while not q.empty():
+            val, node = q.get()
+            point.next = ListNode(val)
+            point = point.next
+            node = node.next
+            if node:
+                q.put((node.val, node))
+        return head.next
 
-        while heap:
-            curVal, curIndex = heapq.heappop(heap)
-            curHead = lists[curIndex]
-            curNext = curHead.next
-            move.next = curHead
-            curHead.next = None
-            move = move.next
-            curHead = curNext
-            if curHead:
-                lists[curIndex] = curHead
-                heapq.heappush(heap, (curHead.val, curIndex))
-        return dummy.next
+
+# Merge with Divide And Conquer
+class Solution2(object):
+
+    # line 50 => mergesort algorithm !!!!!!
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        amount = len(lists)
+        interval = 1
+        while interval < amount:
+            for i in range(0, amount - interval, interval * 2):
+                lists[i] = self.merge2Lists(lists[i], lists[i + interval])
+            interval *= 2
+        return lists[0] if amount > 0 else None
+
+    def merge2Lists(self, l1, l2):
+        head = point = ListNode(0)
+        while l1 and l2:
+            if l1.val <= l2.val:
+                point.next = l1
+                l1 = l1.next
+            else:
+                point.next = l2
+                l2 = l1
+                l1 = point.next.next
+            point = point.next
+        if not l1:
+            point.next = l2
+        else:
+            point.next = l1
+        return head.next
 
 
 """
     我個人覺得難在：要想到min heap => 在python 要實現 min heap 就會想到 heapq => 接著要在想到 enumerate 性質
-    Time Complexity: method1: O(n*k), method2: O(n) (faster than 5%, faster than 98%)
-    N是結果鍊錶的長度，K是每次題目給出的鍊錶個數
-    Space Complexity: both O(1)
-    https://blog.csdn.net/fuxuemingzhu/article/details/83068632
+    
+    method 1, brute force
+    Time complexity : O(NlogN) where N is the total number of nodes.
+    Collecting all the values costs O(N) time.
+    A stable sorting algorithm costs O(NlogN) time.
+    Iterating for creating the linked list costs O(N) time.
+    
+    Space complexity : O(N).
+    Sorting cost O(N) space (depends on the algorithm you choose).
+    Creating a new linked list costs O(N) space.
+    
+    method2:
+    Time complexity : O(NKlogk) where k is the number of linked lists.
+    => 有 K 個 linkedlist, 每個 linkedlist 有 N 個元素, 每一次 priority queue(min-heap) 始終只會保存 k 個元素,
+       即 每一個 linkedlist 同時貢獻一個     
+    
+    The comparison cost will be reduced to O(logk) for every pop and insertion to priority queue. 
+    But finding the node with the smallest value just costs O(1) time.
+    There are N nodes in the final linked list.
+    
+    Space complexity :
+    O(n) Creating a new linked list costs O(n) space.
+    
+    O(k) The code above present applies in-place method which cost O(1) space. 
+    And the priority queue (often implemented with heaps) costs O(k) space (it's far less than N in most situations). 
+    
+    class 2:
+    Time complexity : O(NKlogk) where k is the number of linked lists.
+
+    We can merge two sorted linked list in O(n) time where n is the total number of nodes in two lists.
+    Sum up the merge process and we can get: O(∑ i=1 ~ log 2, k) = O(Nlogk)
+    
+    Space complexity : O(1)
+    
+    We can merge two sorted linked lists in O(1) space.
+    
+    https://www.youtube.com/watch?v=XqA8bBoEdIY
 """
 
 if __name__ == '__main__':

@@ -10,3 +10,9 @@ Two pointers can also have variations like fast-slow pointer.
 
 
 '''
+
+'''
+    在 138, 我們可以看到, 當我們想要在 class 用變數時, 儘量自己創一個  __init__ 來存放他
+    在 23, 我們可以看到另外一個在 class 用變數時之方法, self.xxx => 然後不放置在 __init__ 裡面, 根本沒創建 __init__
+
+'''

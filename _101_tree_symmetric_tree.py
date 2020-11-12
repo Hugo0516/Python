@@ -20,6 +20,23 @@ class Solution:
         return left.val == right.val and self.isMirror(left.left, right.right) and self.isMirror(left.right, right.left)
 
 
+class Solution2:
+    def isSymmetric(self, root: TreeNode) -> bool:
+
+        def helper(node_1, node_2):
+            if not node_1 and not node_2:
+                return True
+            elif not node_1 or not node_2:
+                return False
+            return node_1.val == node_2.val and helper(node_1.left, node_2.right) and helper(
+                node_1.right, node_2.left)
+
+        if not root:
+            return True
+
+        return helper(root.left, root.right)
+
+
 """
     Follow up: Solve it both recursively and iteratively.!!!!!
     
@@ -55,3 +72,6 @@ if __name__ == '__main__':
     root_2.right.right = TreeNode(3)
 
     print(demo.isSymmetric(root_1), demo.isSymmetric(root_2))
+
+    demo2 = Solution2()
+    print(demo2.isSymmetric(root_1))
