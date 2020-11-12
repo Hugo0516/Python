@@ -40,6 +40,12 @@ class Solution:
 """
     這一題是我自己想出來的喔！！！！
     嘻嘻
+    Time Complexity: O(N)
+    since each node is processed exactly once.
+    
+    Space Complexity: O(N)
+    to keep the output structure which contains N node values. 
+    
 """
 
 if __name__ == '__main__':

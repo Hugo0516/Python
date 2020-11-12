@@ -16,3 +16,7 @@ Two pointers can also have variations like fast-slow pointer.
     在 23, 我們可以看到另外一個在 class 用變數時之方法, self.xxx => 然後不放置在 __init__ 裡面, 根本沒創建 __init__
 
 '''
+
+'''
+    abc = collections.deque() => abc = []
+'''

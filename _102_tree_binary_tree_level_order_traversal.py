@@ -60,7 +60,11 @@ class Solution:
             https://blog.csdn.net/coder_orz/article/details/51363095
             
             https://blog.csdn.net/fuxuemingzhu/article/details/79616156
-            
+    Time Complexity: O(N)
+    since each node is processed exactly once.
+    
+    Space Complexity: O(N)
+    to keep the output structure which contains N node values. 
 """
 
 if __name__ == '__main__':
