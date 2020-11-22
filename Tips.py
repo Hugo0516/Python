@@ -1,5 +1,8 @@
-'''
+import collections
 
+tips = "This document is for noting some methods I used to forget"
+
+'''
 Sliding window algorithms can be implemented with a single pointer and a variable for window size.
 Typically we use all of the elements within the window for the problem (for eg - sum of all elements in the window).
 
@@ -27,4 +30,30 @@ Two pointers can also have variations like fast-slow pointer.
 
 """
     在 tree 的題型裡面 可以思考用 recursion 的方式解題, 以recursion 的邏輯下去做思考
+"""
+'''
+    deque 用法, q = deque([]) => 裡面一定要放 []
+'''
+
+'''
+    for i in string.ascii.lowercase: a......z
+'''
+
+test_1 = collections.defaultdict(list)
+print(test_1)
+abc = [2] + [3]
+print(abc)
+
+defg = [[2] + [3] + [4]]
+print(defg)
+
+layer = {}
+layer["hot"] = [["hot", "fuck", "not"]]
+newWord = "dot"
+word = "hot"
+abcd = [j + [newWord] for j in layer[word]]
+print(abcd)
+
+"""
+    235 T.C 再確認
 """

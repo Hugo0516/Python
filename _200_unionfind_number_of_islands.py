@@ -2,9 +2,10 @@ from typing import List
 
 
 class Solution:
+    # DFS version
     def numIslands(self, grid: List[List[str]]) -> int:
 
-        if not grid or len(grid) == 0 or len(grid[0]) == 0:     # 注意這些條件的順序
+        if not grid or len(grid) == 0 or len(grid[0]) == 0:  # 注意這些條件的順序
             return 0
 
         m = len(grid)
@@ -14,7 +15,7 @@ class Solution:
         for y in range(m):
             for x in range(n):
                 if grid[y][x] == '1':
-                    ans += 1    # 和 547 的改良很像
+                    ans += 1  # 和 547 的改良很像
                     self.__dfs(grid, x, y, n, m)
         return ans
 
@@ -53,6 +54,8 @@ class Solution2:
 
 
 """
+    DFS or BFS or Connected Component(Disjoint Set)
+    
     Input: grid = [
       ["1","1","1","1","0"],
       ["1","1","0","1","0"],
@@ -68,6 +71,7 @@ class Solution2:
     
     用connected component 的思路下去想
     
+    Hua Hua:
     Time Complexity: O(mn) / Space Complexity: O(mn)
     http://zxi.mytechroad.com/blog/searching/leetcode-200-number-of-islands/
 """
