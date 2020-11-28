@@ -55,5 +55,20 @@ abcd = [j + [newWord] for j in layer[word]]
 print(abcd)
 
 """
-    235 T.C 再確認
+    235 T.C 再確認/
+    207
+    
+"""
+
+"""
+    Array and Strings:
+    
+    Linked List:
+    
+    Tree and Graphs:
+                    DFS
+                    BFS
+                    Topological Sort, 如果看到題目是要判斷DAG時, 請立馬想到 topological sort,
+                    Topological Sort, 皆可以用DFS or BFS 來實現
+    
 """

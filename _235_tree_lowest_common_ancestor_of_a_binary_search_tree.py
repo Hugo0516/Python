@@ -7,6 +7,7 @@ class TreeNode:
 
 
 class Solution:
+    # iterative method
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         pointer = root
 
@@ -17,6 +18,17 @@ class Solution:
                 pointer = pointer.right
             else:
                 return pointer
+
+    # recursive method
+    def lowestCommonAncestor2(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        while root:
+            if p.val < root.val and q.val < root.val:
+                root = root.left
+            elif p.val > root.val and q.val > root.val:
+                root = root.right
+            else:
+                break
+        return root
 
 
 """
@@ -30,6 +42,7 @@ class Solution:
     Space Complexity : O(1). 
     
     Related: LC 236
+    因為這題是 236 題的特例, 所以用236題的方法直接複製貼上也會過
 """
 if __name__ == '__main__':
     demo = Solution()
