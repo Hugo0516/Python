@@ -66,9 +66,35 @@ print(abcd)
     Linked List:
     
     Tree and Graphs:
-                    DFS
-                    BFS
+                    DFS:
+                    All possible solution / search on graph(treat tree,matrix as a graph) / 
+                    If tree is too depth then DFS would not be a good choice
+                    cycle detection 
+                    U need some logic requiring backtracking
+                    Stack have an chance to explode !
+                    Question like forecasting something from source to destination
+                    想要窮盡所有路徑 => search for entire tree
+                    Depth First Search is commonly used when you need to search the entire tree. 
+                    It's easier to implement (using recursion) than BFS, and requires less state: 
+                    While BFS requires you store the entire 'frontier', 
+                    DFS only requires you store the list of parent nodes of the current element.
+                    
+                    DFS, 無相圖找連通分量, 和 695. Max area of Island, 200. Number of Island!!!, 547. Friend Cycle
+
+                    BFS: => 對二維數組找最優解 Time Complexity 最好
+                    Shortest path on simple graph 
+                    If tree is too width, then BFS is not a good choice, because we need to store all the nodes to be discovered next
+                    只想找到一個最短路徑
+                    Queue don't have a chance to explode.
+                    Like FB => you want to establish friends circle !
+                    Breadth First Search is generally the best approach when the depth of the tree can vary, 
+                    and you only need to search part of the tree for a solution. 
+                    For example, finding the shortest path from a starting value to a final value is a good place to use BFS.
+
+                    https://stackoverflow.com/questions/3332947/when-is-it-practical-to-use-depth-first-search-dfs-vs-breadth-first-search-bf
+                    
                     Topological Sort, 如果看到題目是要判斷DAG時, 請立馬想到 topological sort,
                     Topological Sort, 皆可以用DFS or BFS 來實現
-    
+                    helper()
+                    
 """

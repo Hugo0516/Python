@@ -72,6 +72,16 @@ class Solution:
             q = parent[q]
         return q
 
+    # Approach 4: 這解法和 235 一樣, 可互相參考
+    def lowestCommonAncestor3(self, root, p, q):
+        if not root or p == root or q == root:
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left and right:
+            return root
+        return left if left else right
+
 
 # Approach 3: Iterative without parent pointers
 class Solution2:
@@ -162,6 +172,10 @@ class Solution2:
 
     Space Complexity: O(N). This is because the maximum amount of space utilized by
     the recursion stack would be N since the height of a skewed binary tree could be N. 
+    
+    ****Look Approach 4****
+    It is similar with L.C235 !!!
+     
 """
 
 if __name__ == '__main__':
