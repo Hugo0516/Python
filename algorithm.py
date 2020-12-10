@@ -34,4 +34,16 @@ Advanced => use bottom-up solution with space optimization => Space 通常可以
     0/1背包, 返回最佳解題: dp[i][j] = max(dp[i-1][j] + dp[current], dp[i-1][j])
     
 Fibonacci / Staircase / 0,1 Knapsack / Partition /  
+
+Backtracking:
+常用在組合, 排列等等題型
+模板：
+    def question(...):
+        def dfs():
+        ...
+        ...
+        
+        res =...
+        dfs(...)
+        return res
 """

@@ -57,10 +57,6 @@ class Solution:
 
 class Solution2(object):
     def permute(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
         visited = [0] * len(nums)
         res = []
 

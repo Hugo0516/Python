@@ -105,3 +105,15 @@ Python strip() 方法用於移除字符串頭尾指定的字符（默認為空�
 
 注意：該方法只能刪除開頭或是結尾的字符，不能刪除中間部分的字符。
 """
+
+"""
+permutation / next permutation / combination / subset => 為一組題型
+"""
+
+"""
+map() 函式用法, map()會根據提供的函數對指定序列做映射。第一個參數function 以參數序列中的每一個元素調用function 函數，返回包含每次function 函數返回值的新列表。
+=> 常常語 lambda 做搭配
+int() 函式用法, int() 函數用於將一個字符串或數字轉換為整型。
+
+.join() 函式用法
+"""
