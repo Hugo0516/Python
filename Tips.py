@@ -121,4 +121,30 @@ reduce()用法
 yield 用法
 
 closure 用法
+
+sqrt()用法
+
+functool m用法 , 1240
+
+NP complete
+
+heuristic algorithm
+
+skyline, skyline的意思是 "高", EX: 在x, y座標裡 我可以稱每一的x點座標的高為 skyline
+
+****** 980: 超好的 backtracking 模板 !!!! 
+Whenever we see the context of grid traversal, 
+the technique of backtracking or DFS (Depth-First Search) should ring a bell.
+
+As a reminder, backtracking is a general algorithm for finding all (or some) solutions 
+to some problems with constraints. It incrementally builds candidates to the solutions, 
+and abandons a candidate as soon as it determines that the candidate cannot possibly lead to a solution.
+
+nonlocal 變數
+---------------------
+
+"""
+
+"""
+1240, 看不懂 = =
 """
