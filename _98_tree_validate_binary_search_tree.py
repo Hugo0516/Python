@@ -37,6 +37,53 @@ class Solution:
         # 這裡也是沒用
 
 
+# recursion method
+class Solution3:
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+
+        def helper(node, lower=float('-inf'), upper=float('inf')):
+            if not node:
+                return True
+
+            val = node.val
+            if val <= lower or val >= upper:
+                return False
+
+            if not helper(node.right, val, upper):
+                return False
+            if not helper(node.left, lower, val):
+                return False
+            return True
+
+        return helper(root)
+
+
+# iteration method
+class Solution4:
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+
+        stack = [(root, float('-inf'), float('inf')), ]
+        while stack:
+            root, lower, upper = stack.pop()
+            if not root:
+                continue
+            val = root.val
+            if val <= lower or val >= upper:
+                return False
+            stack.append((root.right, val, upper))
+            stack.append((root.left, lower, val))
+        return True
+
 
 """
     解題思路：
@@ -51,6 +98,13 @@ class Solution:
             
             Both method's time complexity = O(n)
             Space Complexity: O(h)
+            
+    
+    2020/ 12/ 13 補充：
+    
+    Approach 3, Approach 4
+    Time Complexity: O(N), since we visit each node exactly once.
+    Space Complexity: O(N), since we keep up to the entire tree.
 """
 
 if __name__ == "__main__":

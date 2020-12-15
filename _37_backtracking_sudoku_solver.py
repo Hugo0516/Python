@@ -95,6 +95,12 @@ class Solution:
 
 
 """
+from the description of the Sudoku problem, 
+one might have noticed the characteristics that hint on the solution of backtracking, 
+such as the recursive nature of problem, 
+a number of candidate solutions and some rules to filter out the candidates etc.
+
+
 Approach 0: Brute Force
 
 The first idea is to use brut-force to generate all possible ways to fill the cells with numbers from 1 to 9, 

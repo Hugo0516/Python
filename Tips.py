@@ -132,6 +132,8 @@ heuristic algorithm
 
 skyline, skyline的意思是 "高", EX: 在x, y座標裡 我可以稱每一的x點座標的高為 skyline
 
+import copy => 為了使用 deepcopy => 256 題 
+
 ****** 980: 超好的 backtracking 模板 !!!! 
 Whenever we see the context of grid traversal, 
 the technique of backtracking or DFS (Depth-First Search) should ring a bell.
@@ -141,10 +143,80 @@ to some problems with constraints. It incrementally builds candidates to the sol
 and abandons a candidate as soon as it determines that the candidate cannot possibly lead to a solution.
 
 nonlocal 變數
+
+一般回溯問題分三種：
+
+Find a path to success 有沒有解
+Find all paths to success 求所有解
+求所有解的個數
+求所有解的具體信息
+3.Find the best path to success 求最優解
+
+37.
+from the description of the Sudoku problem, 
+one might have noticed the characteristics that hint on the solution of backtracking, 
+such as the recursive nature of problem, 
+a number of candidate solutions and some rules to filter out the candidates etc.
 ---------------------
 
 """
 
 """
 1240, 看不懂 = =
+"""
+
+"""
+Divide and Conquer:
+Let's follow here a solution template for the divide and conquer problems :
+
+Define the base case(s).
+
+Split the problem into subproblems and solve them recursively.
+
+Merge the solutions for the subproblems to obtain the solution for the original problem.
+
+Divide and Conquer 題型要分析時間複雜度, 好像都得用 Master Therom
+"""
+
+"""
+Greedy: 
+Pick the locally optimal move at each step, and that will lead to the globally optimal solution.
+"""
+
+"""
+DP:
+The problem to find sum or maximum or minimum in an entire array or in a fixed-size sliding window
+could be solved by the dynamic programming (DP) approach in linear time.
+
+看 221 !!!!!!!
+
+dp 問題, 為什麼我們常常會讓 dp數組的大小 row col 各加1呢？
+=> 為了避免 out of range
+
+256, good example !!!
+Dynamic programming is iterative, unlike memoization, which is recursive.
+Problems that have optimal substructure can be solved with greedy algorithms. 
+If they also have overlapping subproblems, then they can be solved with dynamic programming algorithms.
+
+"""
+
+"""
+monotonic queue/ deque
+題型： 239
+"""
+
+"""
+priority queue
+=> 根據 leetcode 313 的說詞:
+Write a program to find the nth super ugly number.
+=> 根據 youtube 講解, 說我們電奧 nth 這種關鍵字 要想到 priority queue 即 heap
+"""
+
+"""
+heapq, heappop, heappush
+"""
+
+"""
+https://docs.python.org/3/library/functools.html#functools.lru_cache
+functool 要看 !!!!!!!
 """
