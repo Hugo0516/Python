@@ -220,3 +220,43 @@ heapq, heappop, heappush
 https://docs.python.org/3/library/functools.html#functools.lru_cache
 functool 要看 !!!!!!!
 """
+
+"""
+22 題的 backtrack 很特別, 在做完 backtrack 後沒有用 remove function
+=> 我發現是因為用了 String !!!!, String 很特別, 跟 list 不一樣, 然後 因為也沒有用 for 都是用 if !!!!
+=> 我猜想的啦
+
+17 題也是 看！！！
+"""
+
+"""
+nonlocal 變數
+"""
+
+"""
+Leetcode 108:
+要注意！！！！ BST 不唯一 !!!!
+詳細請看:https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/solution/
+然後  inorder traversal 遍歷出來的數字是用 ascending 的 !!!!
+
+Here is the funny thing about BST. Inorder traversal is not a unique identifier of BST. 
+At the same time both preorder and postorder traversals are unique identifiers of BST
+
+Here we have an additional condition: the tree should be height-balanced, 
+i.e. the depths of the two subtrees of every node never differ by more than 1.
+
+Basically, the height-balanced restriction means that 
+at each step one has to pick up the number in the middle as a root. 
+
+That works fine with arrays containing odd number of elements 
+but there is no predefined choice for arrays with even number of elements.
+
+It's known that inorder traversal of BST is an array sorted in the ascending order.
+
+
+"""
+
+"""
+a / 2.0 => float
+a / 2 ==> int
+"""

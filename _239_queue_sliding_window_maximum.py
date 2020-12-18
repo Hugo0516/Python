@@ -101,6 +101,7 @@ Time Complexity: O(N)
 Space Complexity: OKk)
 
 *** 第四個是我理解的 ***
+可以和 480 比較 
 """
 if __name__ == '__main__':
     demo = Solution()

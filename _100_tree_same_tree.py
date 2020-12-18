@@ -1,4 +1,7 @@
 # Definition for a binary tree node.
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -12,7 +15,33 @@ class Solution:
             return True
         if not p or not q:
             return False
-        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        if p.val != q.val:
+            return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+
+class Solution2:
+    def isSameTree(self, p, q):
+        def check(p, q):
+            # if both are None
+            if not p and not q:
+                return True
+            # one of p and q is None
+            if not q or not p:
+                return False
+            if p.val != q.val:
+                return False
+            return True
+
+        deq = deque([(p, q), ])
+        while deq:
+            p, q = deq.popleft()
+            if not check(p, q):
+                return False
+            if p:
+                deq.append((p.left, q.left))
+                deq.append((p.right, q.right))
+        return True
 
 
 """
@@ -26,6 +55,10 @@ class Solution:
     最後遞歸處理兩個結點的左右子樹，返回左右子樹遞歸的與結果即可。
 
     https://blog.csdn.net/fuxuemingzhu/java/article/details/51285076
+    
+    Time Complexity: O(N), where N is a number of nodes in the tree, since one visits each node exactly once.
+    Space Complexity:O(log(N)) in the best case of completely balanced tree and 
+                     O(N) in the worst case of completely unbalanced tree, to keep a recursion stack. 
 """
 
 if __name__ == '__main__':
@@ -55,3 +88,5 @@ if __name__ == '__main__':
 
     print(demo.isSameTree(p_1, p_2), demo.isSameTree(p_3, p_4), demo.isSameTree(p_5, p_6))
 
+    demo2 = Solution2()
+    print(demo2.isSameTree(p_1, p_2))

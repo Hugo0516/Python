@@ -55,7 +55,6 @@ class Node:
             res.append(root.data)
             self.inorder_traversal2(root.right, res)
 
-
     # Preorder traversal
     # Root -> Left ->Right
     def PreorderTraversal(self, root):

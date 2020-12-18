@@ -10,8 +10,8 @@ class Solution:
                 cur[l] = c
                 dfs(digits, d, l + 1, cur, ans)
 
-        d = [" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]     # Space : 4^n
-        cur = [' ' for _ in range(len(digits))]     # Space: n
+        d = [" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]  # Space : 4^n
+        cur = [' ' for _ in range(len(digits))]  # Space: n
         ans = []
         dfs(digits, d, 0, cur, ans)
         return ans
@@ -34,7 +34,7 @@ class Solution:
     def letterCombinations3(self, digits):
         if len(digits) == 0:
             return []
-        digit_map = {0: "0", 1: "1", 2: "abc", 3: "def", 4: "ghi", 5: "jkl", 6: "mno", 7: "pqrs", 8: "tuv", 9:"wxyz"}
+        digit_map = {0: "0", 1: "1", 2: "abc", 3: "def", 4: "ghi", 5: "jkl", 6: "mno", 7: "pqrs", 8: "tuv", 9: "wxyz"}
 
         result = [""]
         for digit in digits:
@@ -44,6 +44,42 @@ class Solution:
                     tmp_list.append(str + ch)
             result = tmp_list
         return result
+
+
+class Solution2:
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        phone = {'2': ['a', 'b', 'c'],
+                 '3': ['d', 'e', 'f'],
+                 '4': ['g', 'h', 'i'],
+                 '5': ['j', 'k', 'l'],
+                 '6': ['m', 'n', 'o'],
+                 '7': ['p', 'q', 'r', 's'],
+                 '8': ['t', 'u', 'v'],
+                 '9': ['w', 'x', 'y', 'z']}
+
+        def backtrack(combination, next_digits):
+            # if there is no more digits to check
+            if len(next_digits) == 0:
+                # the combination is done
+                output.append(combination)
+            # if there are still digits to check
+            else:
+                # iterate over all letters which map
+                # the next available digit
+                for letter in phone[next_digits[0]]:
+                    # append the current letter to the combination
+                    # and proceed to the next digits
+                    backtrack(combination + letter, next_digits[1:])
+
+        output = []
+        if digits:
+            backtrack("", digits)
+        return output
+
 
 """
     解題思路：
@@ -56,9 +92,16 @@ class Solution:
             
             https://www.youtube.com/watch?v=KAJnbsikSC8
             
+2020/ 12/ 18 update
+Solution2, backtrack method
+Time Complexity: O(3^N * 4^M)
+Space Complexity: O(3^N * 4^M)
 """
 
 if __name__ == '__main__':
     demo = Solution()
     input_1 = "23"
     print(demo.letterCombinations3(input_1))
+
+    demo2 = Solution2()
+    print(demo2.letterCombinations(input_1))
