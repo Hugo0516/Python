@@ -227,6 +227,8 @@ functool 要看 !!!!!!!
 => 我猜想的啦
 
 17 題也是 看！！！
+
+301 也是 => 共通點 都是因為 String
 """
 
 """
@@ -259,4 +261,13 @@ It's known that inorder traversal of BST is an array sorted in the ascending ord
 """
 a / 2.0 => float
 a / 2 ==> int
+"""
+
+"""
+set 性質 , 可以用到 union , 參見 1249
+
+"""
+
+"""
+棘手系列問題： parantheses 問題 , stock 問題, palindrome 問題. 
 """
