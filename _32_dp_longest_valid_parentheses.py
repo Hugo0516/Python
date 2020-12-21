@@ -14,17 +14,25 @@ class Solution:
                             dp[i] = dp[i - 1] + 2
                 res = max(res, dp[i])  # 更新最長的合法子串
         return res
+
+
 """
 This is DP version
+
+*** 記住這個版本 !!!!!! ***
+
+Transfer function:
+dp array where ith element of dp represents the length of the longest valid substring ending at ith index. 
+We initialize the complete dp array with 0's.
 
 看到這個問題的時候，第一想法就是那個最長回文子串問題，也就是可以使用動態規劃的思想來解決。大概過程如下:
 （1）設dp[i]表示以第i個字符結尾的最長合法字串的長度，初始化全為0。
 （2）對整個字符串進行一次遍歷操作，遇到'('時，不用操作，因為以'('結尾的子串一定不是合法的。
 （3）當遇到的字符是')'時，要具體分析，因為以')'結尾的串可能是合法的也可能是不合法的。
-        A、如果s[i-1] == '('則，dp[i] = dp[i-1] + 2 ,因為前一個是非法結尾，可以形成一對合法的括號，所以直接加2。
-        B、如果s[i-1] == ')' 則，在當前字串前，可能存在一個合法的子串，也可能不存在合法的子串。
+A、如果s[i-1] == '('則，dp[i] = dp[i-1] + 2 ,因為前一個是非法結尾，可以形成一對合法的括號，所以直接加2。
+B、如果s[i-1] == ')' 則，在當前字串前，可能存在一個合法的子串，也可能不存在合法的子串。
 a、現在我們要找到s[i - 1 - dp[i - 1]]這個字符，判斷它是否=='('，如果等於說明這個合法的子串在兩端還可以添加一對括號，所以總的長度還可以增加2。
-b、此外，還有一個情況，就是，在s[i - 1 - dp[i - 1]] =='(' 的位置之前，
+b、此外，還有一個情況，就是，在s[i - 1 - dp[i - 1]] =='('的位置之前，
 如果也存在一個合法的子串，那麼現在也應該把他添加到dp[i]中，所以dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2。
 （需要注意的是，要判斷向前查找的過程，數字不要越界）
 Both time complexity and space complexity are O(n)
@@ -36,8 +44,42 @@ Explanation: The longest valid parentheses substring is "()"
 Input: ")()())"
 Output: 4
 Explanation: The longest valid parentheses substring is "()()"
+
+Time Complexity: O(n), n is the length of the given string.
+Space Complexity: O(n), the size of stack can go up to n.
+
 """
 
+
+class Solution2:
+
+    def longestValidParentheses(self, s: str) -> int:
+        ans = 0
+        dp = [0] * len(s)
+
+        for i in range(1, len(s)):
+            if s[i] == ')':
+                if s[i - 1] == '(':
+                    if i >= 2:
+                        dp[i] = dp[i - 2] + 2
+                    else:
+                        dp[i] = 2
+                elif i - dp[i - 1] > 0 and s[i - dp[i - 1] - 1] == '(':
+                    if (i - dp[i - 1]) >= 2:
+                        dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2
+                    else:
+                        dp[i] = dp[i - 1] + 2
+            ans = max(ans, dp[i])
+
+        return ans
+
+
+"""
+Leetcode 版本的 DP 寫法, 應該和 sol 1 的 transfer function 定義一樣才對
+
+Time Complexity: O(n), n is the length of the given string.
+Space Complexity: O(n), the size of stack can go up to n.
+"""
 
 # class Solution:
 #
@@ -76,3 +118,11 @@ if __name__ == '__main__':
     print('')
     solu = Solution()
     print(solu.longestValidParentheses(s))
+
+    s2 = "(()"
+    s3 = ")()())"
+    s4 = "())((())"
+    demo2 = Solution2()
+    print(demo2.longestValidParentheses(s2))
+    print(demo2.longestValidParentheses(s3))
+    print(demo2.longestValidParentheses(s4))

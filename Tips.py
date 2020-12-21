@@ -269,5 +269,9 @@ set 性質 , 可以用到 union , 參見 1249
 """
 
 """
-棘手系列問題： parantheses 問題 , stock 問題, palindrome 問題. 
+棘手系列問題： parantheses 問題 , stock 問題, palindrome 問題, word break, 
+"""
+
+"""
+itertool.xxx => 241
 """
