@@ -63,6 +63,8 @@ Time Complexity: O( k * 2^n )
 Space Complexity: O(n)
 
 Reference: https://www.youtube.com/watch?v=JyYZ1j3Uv0E
+https://leetcode.com/problems/partition-to-k-equal-sum-subsets/discuss/180014/Backtracking-Thinking-Process
+
 """
 
 if __name__ == '__main__':
