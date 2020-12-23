@@ -278,4 +278,9 @@ itertool.xxx => 241
 
 """
 zip 用法, 122
+orderdict 用法 146
+"""
+
+"""
+use slow/fast pointer to find a mid point
 """
