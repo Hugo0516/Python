@@ -284,3 +284,28 @@ orderdict 用法 146
 """
 use slow/fast pointer to find a mid point
 """
+
+"""
+python 去亂數方法 => from random import choice
+                    choice(list_1) =>  從 list_1 取隨機數
+"""
+
+"""
+any()用法 767
+"""
+
+"""
+['a', 'b', 'c'], 注意, 要把這種包著 string 的 list, 轉成純string 要用 join!!
+=> "".join(list)
+"""
+
+"""
+2D traversal, 要想到 DFS, BFS
+The choice of strategy depends on the nature of the problem. 
+Though sometimes, they are both applicable for the same problem. 
+
+In addition to 2D grids, these two algorithms are often applied to problems 
+associated with tree or graph data structures as well.
+
+
+"""
