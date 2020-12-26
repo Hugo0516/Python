@@ -309,3 +309,17 @@ associated with tree or graph data structures as well.
 
 
 """
+
+"""
+isdigit() 用法, 224, isdigit 只能用在 string 
+"""
+
+"""
+sliding window, 和 itertools.groupby 是一樣的東西？
+leetcode 723
+"""
+
+"""
+772 要再看過 ！！！！！！！！！！
+
+"""
