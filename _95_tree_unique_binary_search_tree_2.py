@@ -41,10 +41,41 @@ class Solution:
                     res.append(root)
         return res
 
-    def generateTreesDFS(self, n: List)-> List[TreeNode]:
+    def generateTreesDFS(self, n: List) -> List[TreeNode]:
         if n == 0:
             return []
         return self.help(1, n)
+
+
+class Solution2:
+    def generateTrees(self, n: int) -> List[TreeNode]:
+
+        def generate_trees(start, end):
+            if start > end:
+                return [None, ]
+
+            all_trees = []
+            for i in range(start, end + 1):  # pick up a root
+                # all possible left subtrees if i is choosen to be a root
+                left_trees = generate_trees(start, i - 1)
+
+                # all possible right subtrees if i is choosen to be a root
+                right_trees = generate_trees(i + 1, end)
+
+                # connect left and right subtrees to the root i
+                for l in left_trees:
+                    for r in right_trees:
+                        current_tree = TreeNode(i)
+                        current_tree.left = l
+                        current_tree.right = r
+                        all_trees.append(current_tree)
+
+            return all_trees
+
+        return generate_trees(1, n) if n else []
+
+
+
 
 
 """
@@ -66,6 +97,13 @@ class Solution:
 
             https://www.youtube.com/watch?v=NA-08UPnY6A
             https://blog.csdn.net/fuxuemingzhu/article/details/80778651
+
+2020 / 12 30 updated
+Approach 2: Recursion
+
+Time Complexity: G(n)的成長函數 => O( 4^n / n^(3/2) )
+Space Complexity: O( 4^n / n^(1/2) ) = G(n) * n
+=> we keep G(n) trees with n element each.
 """
 
 if __name__ == '__main__':
@@ -81,3 +119,6 @@ if __name__ == '__main__':
     #
     # for item in output_1:
     #     print(item)
+
+    demo2 = Solution2()
+    res2 = demo2.generateTrees(3)

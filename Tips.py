@@ -323,3 +323,26 @@ leetcode 723
 772 要再看過 ！！！！！！！！！！
 
 """
+
+"""
+in-place algorithm
+
+Does in-place mean constant space complexity?
+
+No. By definition, an in-place algorithm is an algorithm which transforms input using no auxiliary data structure.
+
+The tricky part is that space is used by many actors, not only by data structures. 
+The classical example is to use recursive function without any auxiliary data structures.
+
+Is it in-place? Yes.
+
+Is it constant space? No, because of recursion stack.
+"""
+
+"""
+Catalan number !!!!!
+要知道那是啥, 可以應用在很多題目上面
+請直接看 wiki
+Catalan number 的 時間複雜度 也要記！！！
+Reference: 95 96 !!!
+"""

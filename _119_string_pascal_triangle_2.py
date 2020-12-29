@@ -7,7 +7,7 @@ class Solution:
 
         for i in range(rowIndex):
             # res[0] = 1
-            for j in range(i + 1, 0, -1):   # 一樣是包含頭不包含尾
+            for j in range(i + 1, 0, -1):  # 一樣是包含頭不包含尾
                 res[j] = res[j] + res[j - 1]
 
         return res
@@ -15,7 +15,7 @@ class Solution:
 
 class Solution2:
 
-    def getRow2(self, rowIndex: int) -> List[int]:
+    def getRow(self, rowIndex: int) -> List[int]:
         result = []
 
         for i in range(rowIndex + 1):
@@ -30,17 +30,80 @@ class Solution2:
         return result[rowIndex]
 
 
-"""
-    Input: rowIndex = 3
-    Output: [1,3,3,1]
+class Solution3:
+    # 這是 top-down 的方法
+    def getRow(self, rowIndex: int) -> List[int]:
+        def getNum(row: int, col: int):
+            if row == 0 or col == 0 or row == col:
+                return 1
+            return getNum(row - 1, col - 1) + getNum(row - 1, col)
+
+        ans = []
+
+        for i in range(rowIndex + 1):
+            ans.append(getNum(rowIndex, i))
+
+        return ans
+
+
+class Solution4:
+    def getRow(self, rowIndex: int) -> List[int]:
+        dp = [[1 for i in range(rowIndex + 1)] for j in range(rowIndex + 1)]
+
+        for i in range(rowIndex + 1):
+            for j in range(rowIndex):
+                if i == 0 or j == 0 or i == j:
+                    dp[i][j] = 1
+                else:
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1]
+
+        return dp[rowIndex]
+
+
+class Solution5:
+    def getRow(self, rowIndex: int) -> List[int]:
+        dp = [1 for i in range(rowIndex + 1)]
+
+        for i in range(rowIndex):
+            j = i
+            while i > 0:
+                dp[j] = dp[j] + dp[j - 1]
+            dp.append(1)
+
+        return dp
+
+
+"""    
+    Reference:
+    *** 記住第一個方法 ***
+    Approach 1: Michelle
+    Time Complexity: O(k^2)
+    Space Complexity: O(1)
     
-    Solution 的解法才能達到 TIME COMPLEXITY = O(K) 的程度
-    某個低能兒提供的Solution2 解法還是一樣O(k^2) 真的白痴
-    Solution才是正確的！
+    Approach 2: Michelle 說明底下, 路人提供的解答
+    Time Complexity: O(k^2)
+    Space Complexity:  O(^2)
     
-    https://www.youtube.com/watch?v=PKiV5HhnfDw
+    Approach 3: Brute Force: => Time limit exceeded
+    Time Complexity: O(2^k), T(k, i) = T(k-1, i) + T(k-1, i-1) + O(1)
     
-    Steps:
+    Space Complexity: O(k), we need O(k) space to store the output of the kth row.
+    At worst, the recursive call stack has a maximum of k calls in memory,
+    each call taking constant space. That's O(k) worst case recursive call stack space.
+    
+    Constraints:
+    1. getNUm(row, col) = getNum(row-1, col-1) + getNum(row-1, col)
+    2. The first row is just a single 1
+    3. The first and last number of each rows is 1, getNum(k, 0) = getNum(k, k) = 1
+    
+    Approach 4: DP, I did it by myself
+    *** 可以參考 ***
+    Time Complexity: O(n^2)
+    Space Complexity: O(n^2)
+    
+
+    
+    Approach 1 Steps:
     i = 0
     j = 1
     [1, 1, 0, 0]
@@ -65,3 +128,9 @@ class Solution2:
 if __name__ == '__main__':
     demo = Solution()
     print(demo.getRow(3))
+
+    demo3 = Solution3()
+    print(demo3.getRow(4))
+
+    demo4 = Solution4()
+    print(demo4.getRow(4))

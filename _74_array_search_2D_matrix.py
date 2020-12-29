@@ -20,9 +20,37 @@ class Solution:
                 return False
 
 
+class Solution2:
+
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m = len(matrix)
+        if m == 0:
+            return False
+        n = len(matrix[0])
+
+        # binary search
+        left, right = 0, m * n - 1
+        while left <= right:
+            pivot_idx = (left + right) // 2
+            pivot_element = matrix[pivot_idx // n][pivot_idx % n]
+            if target == pivot_element:
+                return True
+            else:
+                if target < pivot_element:
+                    right = pivot_idx - 1
+                else:
+                    left = pivot_idx + 1
+        return False
+
+
 """
     和 240 題比較, 解法完全一模一樣
     https://blog.csdn.net/fuxuemingzhu/java/article/details/79459200
+    
+Approach 2:Binary Search
+Time Complexity: O(log(mn)), since it's a standard binary search
+Space Complexity: O(1)
+
 """
 if __name__ == '__main__':
     demo = Solution()
@@ -43,3 +71,6 @@ if __name__ == '__main__':
 
     print(demo.searchMatrix(input_1, target_1))
     print(demo.searchMatrix(input_2, target_2))
+
+    demo2 = Solution2()
+    print(demo2.searchMatrix(input_1, target_1))

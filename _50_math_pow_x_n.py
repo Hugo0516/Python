@@ -41,6 +41,10 @@ class Solution2:
     
     Fast Power Algorithm Recursive: 
     Time Complexity: O(logn)  Space Complexity: O(logn)(因為 stack 空間)
+    
+    *** N = -N, 在別的語言可能有 overflow 風險? ***
+    從 籃子王 得知, 由於我們的 input range => -(2^31) <= n <= 2^31-1, 所以如果你直接把最小的數字變成正數, 會 overflow!!!!!
+    => 所以如果在其他語言, 我們要先 +1 再取負
 """
 
 if __name__ == '__main__':

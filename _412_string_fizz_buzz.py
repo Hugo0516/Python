@@ -18,6 +18,10 @@ class Solution:
         return result
 
 
+"""
+Time Complexity: O(N)
+Space Complexity: O(1)
+"""
 if __name__ == '__main__':
     demo = Solution()
     print(demo.fizzBuzz(15))
