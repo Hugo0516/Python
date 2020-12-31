@@ -48,6 +48,17 @@ class Solution:
             return self.hasPathSum3(root.left, sum - root.val) or self.hasPathSum3(root.right, sum - root.val)
 
 
+class Solution2:
+    def hasPathSum(self, root: TreeNode, sum: int) -> bool:
+        if not root:
+            return False
+
+        sum -= root.val
+        if not root.left and not root.right:  # if reach a leaf
+            return sum == 0
+        return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
+
+
 """
     法ㄧ:
     這題的觀念很重要!!!!!!
@@ -68,6 +79,12 @@ class Solution:
     
     法三比較好！！！ 非常直覺
     https://www.youtube.com/watch?v=2PjOR354ASs
+    
+2020 / 12 / 31 updated
+Approach: Recursion (我覺得是 top-down)
+
+Time Complexity: O(N)
+Space Complexity: O(LogN)
 """
 
 if __name__ == '__main__':
@@ -86,3 +103,6 @@ if __name__ == '__main__':
 
     print(demo.hasPathSum(root_1, 22))
     print(demo.hasPathSum(root_1, 27))
+
+    demo2 = Solution2()
+    print(demo2.hasPathSum(root_1, 22))

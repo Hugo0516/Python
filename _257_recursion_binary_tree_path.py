@@ -28,6 +28,7 @@ class Solution:
         return paths
 
 
+# 我自己寫的, 為了改進 sol1 的 str 部分
 class Solution2:
     def binaryTreePaths(self, root: TreeNode) -> List[str]:
         def construct_paths(root, path):
@@ -59,10 +60,12 @@ class Solution3:
             node, path = stack.pop()
             if not node.left and not node.right:
                 paths.append(path)
-            if node.left:
-                stack.append((node.left, path + '->' + str(node.left.val)))
+
             if node.right:
                 stack.append((node.right, path + '->' + str(node.right.val)))
+
+            if node.left:
+                stack.append((node.left, path + '->' + str(node.left.val)))
 
         return paths
 
@@ -74,10 +77,12 @@ Time Complexity: O(N), we visit each node exactly once
 Space Complexity: O(N), Here we use the space for a stack call and for a paths list to store the answer.
 => Best case O(Log N)
 
-Approach 2: Iteration:
+Approach 3: Iteration:
 
 Time Complexity: O(N)
 Space Complexity: O(N)
+
+*** 我發現 這就只是 Preorder Traversal 的改良而已 !!! ***
 """
 
 if __name__ == '__main__':
@@ -92,3 +97,6 @@ if __name__ == '__main__':
 
     demo2 = Solution2()
     print(demo2.binaryTreePaths(root))
+
+    demo3 = Solution3()
+    print(demo3.binaryTreePaths(root))

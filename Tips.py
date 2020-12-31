@@ -346,3 +346,11 @@ Catalan number !!!!!
 Catalan number 的 時間複雜度 也要記！！！
 Reference: 95 96 !!!
 """
+
+"""
+top-down 
+bottom-up
+比較題目！！！
+
+=> 104, 250, 509
+"""

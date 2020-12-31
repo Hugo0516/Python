@@ -42,6 +42,25 @@ class Solution3:
         return depth
 
 
+class Solution4:
+
+    def maxDepth(self, root: TreeNode) -> int:
+        self.ans = 0
+
+        def helper(root, depth):
+            if not root:
+                return
+
+            if not root.left and not root.right:
+                self.ans = max(self.ans, depth)
+
+            helper(root.left, depth + 1)
+            helper(root.right, depth + 1)
+
+        helper(root, 1)
+        return self.ans
+
+
 """
     用宏觀的角度去看這個遞迴!!!! 就會覺得簡單
     t.ly/mtV0
@@ -53,9 +72,19 @@ Approach 1, 2: Recursion
 Time Complexity: O(N), n is the number of nodes.
 Space Complexity: worst case for skew tree is O(N), for best case => balanced tree is O(LogN)
 
+*** Approach 1, 2 *** is bottom-up solution !
+
 Approach 3: Iteration
 Time Complexity: O(N)
 Space Complexity: O(N) or O(LogN)
+
+2020 / 12 / 31 updated:
+
+Approach 4: Top-down solution !
+
+Reference: Leetcode Tutorial
+https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/534/
+
 """
 
 if __name__ == '__main__':
@@ -67,3 +96,7 @@ if __name__ == '__main__':
     root_1.right.right = TreeNode(7)
 
     print(demo.maxDepth(root_1))
+
+    demo3 = Solution3()
+    root2 = TreeNode(1)
+    print(demo3.maxDepth(root2))

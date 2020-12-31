@@ -5,6 +5,7 @@ class Solution:
         return self.fib(N - 1) + self.fib(N - 2)
 
 
+# Bottom-up
 class Solution2:
     def fib(self, N: int) -> int:
         if N <= 1:
@@ -21,6 +22,7 @@ class Solution2:
         return cache[N]
 
 
+# Top-down
 class Solution3:
     def fib(self, N: int) -> int:
         if N <= 1:
@@ -31,6 +33,7 @@ class Solution3:
     def memoize(self, N: int) -> {}:
         if N in self.cache.keys():
             return self.cache[N]
+
         self.cache[N] = self.memoize(N - 1) + self.memoize(N - 2)
         return self.memoize(N)
 
@@ -132,4 +135,3 @@ if __name__ == '__main__':
     demo3 = Solution3()
     demo4 = Solution4()
     demo5 = Solution5()
-

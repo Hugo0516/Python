@@ -67,14 +67,42 @@ class Solution2:
 """
 Approach 1: BFS Traversal
 
-Time Complexity:
-Space Complexity:
+Time Complexity: O(N) 
+Space Complexity: O(N)
 
-Approach 2: DFS Traversal
+Approach 2: DFS Pre-order Traversal 
 
-Time Complexity:
-Sapce Complexity:
+Time Complexity: O(N)
+Sapce Complexity: O(N)
+=> 這裡一定要用 pre order, 因為我們要最先得到 leftmost child of the certain depth
+=> 這樣才能確保 line 53, 放入的是最左邊的數字
+
+*** 這一題的重點!!! ***
+要找到 node 與 node.leftchildren 和 node.rightchildren 的關係！！！
+if root = C, C 設定從 0 開始才會符合底下關係
+=> left child of root = 2C
+=> right child of root = 2C + 1
+
 """
 
 if __name__ == '__main__':
-    pass
+    demo = Solution()
+    demo2 = Solution2()
+
+    root = TreeNode(1)
+    root.left = TreeNode(3)
+    root.right = TreeNode(2)
+    root.left.left = TreeNode(5)
+    root.left.right = TreeNode(3)
+    root.right.right = TreeNode(9)
+
+    print(demo.widthOfBinaryTree(root))
+    print(demo2.widthOfBinaryTree(root))
+
+    root2 = TreeNode(1)
+    root2.left = TreeNode(3)
+    root2.right = TreeNode(2)
+    root2.right.right = TreeNode(9)
+    root2.right.right.right = TreeNode(7)
+    root2.right.right.left = TreeNode(6)
+    print(demo2.widthOfBinaryTree(root2))
