@@ -354,3 +354,19 @@ bottom-up
 
 => 104, 250, 509
 """
+
+"""
+string.find() => 536 用法!!!!
+string.index() => 108用法 !!! 
+"""
+
+"""
+What is iterator?
+https://leetcode.com/problems/peeking-iterator/solution/
+341, 284, 比較
+我對 iterator 的 next 方法, 感到疑惑, 到底是return curr, 然後 curr.next
+還是, curr.next 後 return curr
+
+341 是下面
+284 是上面 = =
+"""

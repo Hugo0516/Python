@@ -98,7 +98,7 @@ class Solution4:
         visited = {}
 
         # Put the first node in the queue
-        queue = deque([node])
+        queue = collections.deque([node])
         # Clone the node and put it in the visited dictionary.
         visited[node] = Node(node.val, [])
 
@@ -121,18 +121,57 @@ class Solution4:
 
 
 """
+解題思路：
+1. 找到圖中所有的點
+2. 複製所有找到的點, 並一一對應 => 一一對應, 想到 Map 映射關係 !
+3. 複製點的邊
+
 Approach 1: DFS
-
-Approach 2 : Leetcode DFS
-
-Approach 3: BFS
-
-Approach 4: Leetocde BFS 
 
 Time Complexity:
 Space Complexity:
+
+Approach 2 : Leetcode DFS
+
+Time Complexity: O(N+M), where N is the number of nodes and M is the number of edges
+
+Space Complexity: O(N),This space is occupied by the visited hash map and in addition to that, 
+space would also be occupied by the recursion stack since we are adopting a recursive approach here. 
+The space occupied by the recursion stack would be equal to O(H) 
+where H is the height of the graph. Overall, the space complexity would be O(N). 
+
+Approach 3: BFS
+
+Time Complexity:
+Space Complexity:
+
+Approach 4: Leetcode BFS 
+
+Time Complexity: O(N+M), where N is the number of nodes and M is the number of edges
+
+Space Complexity: O(N),This space is occupied by the visited hash map and in addition to that, 
+space would also be occupied by the recursion stack since we are adopting a recursive approach here. 
+The space occupied by the recursion stack would be equal to O(H) 
+where H is the height of the graph. Overall, the space complexity would be O(N). 
+
 """
 
 if __name__ == '__main__':
     demo = Solution()
     demo2 = Solution2()
+    demo3 = Solution3()
+    demo4 = Solution4()
+
+    root = Node(1)
+    root2 = Node(2)
+    root3 = Node(3)
+    root4 = Node(4)
+    root.neighbors = [root2, root4]
+    root2.neighbors = [root, root3]
+    root3.neighbors = [root2, root4]
+    root4.neighbors = [root, root3]
+
+    res = demo.cloneGraph(root)
+    res2 = demo2.cloneGraph(root)
+    res3 = demo3.cloneGraph(root)
+    res4 = demo4.cloneGraph(root)

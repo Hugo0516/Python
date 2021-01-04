@@ -80,7 +80,7 @@ class Solution2:
     法三比較好！！！ 非常直覺
     https://www.youtube.com/watch?v=2PjOR354ASs
     
-2020 / 12 / 31 updated
+2020 / 12 / 31 updated, sol2
 Approach: Recursion (我覺得是 top-down)
 
 Time Complexity: O(N)

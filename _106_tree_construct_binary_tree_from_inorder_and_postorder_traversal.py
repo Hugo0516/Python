@@ -22,9 +22,45 @@ class Solution:
         return root
 
 
+class Solution2:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        def helper(in_left, in_right):
+            # if there is no elements to construct subtrees
+            if in_left > in_right:
+                return None
+
+            # pick up the last element as a root
+            val = postorder.pop()
+            root = TreeNode(val)
+
+            # root splits inorder list
+            # into left and right subtrees
+            index = idx_map[val]
+
+            # build right subtree
+            root.right = helper(index + 1, in_right)
+            # build left subtree
+            root.left = helper(in_left, index - 1)
+            return root
+
+        # build a hashmap value -> its index
+        idx_map = {val: idx for idx, val in enumerate(inorder)}
+        return helper(0, len(inorder) - 1)
+
+
 """
     和 105 互相比較
     t.ly/2M61
+    
+Approach 1: Recursion:
+
+Time Complexity: O(n^2), N is the number of nodes
+Space Complexity: O(n^2)
+
+Approach 2: Recursion with space saving variant
+
+Time Complexity: O(N), 少了 slice
+Space Complexity: O(N), 少了 slice
 """
 
 if __name__ == '__main__':

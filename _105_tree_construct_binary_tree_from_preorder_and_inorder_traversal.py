@@ -15,9 +15,41 @@ class Solution:
             return None
         root = TreeNode(preorder[0])
         index = inorder.index(preorder[0])
-        root.left = self.buildTree(preorder[1:index+1], inorder[:index])
-        root.right = self.buildTree(preorder[index+1:], inorder[index+1:])
+        root.left = self.buildTree(preorder[1:index + 1], inorder[:index])
+        root.right = self.buildTree(preorder[index + 1:], inorder[index + 1:])
         return root
+
+
+class Solution2:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        def helper(in_left=0, in_right=len(inorder)):
+            nonlocal pre_idx
+            # if there is no elements to construct subtrees
+            if in_left == in_right:
+                return None
+
+            # pick up pre_idx element as a root
+            root_val = preorder[pre_idx]
+            root = TreeNode(root_val)
+
+            # root splits inorder list
+            # into left and right subtrees
+            index = idx_map[root_val]
+
+            # recursion
+            pre_idx += 1
+            # build left subtree
+            root.left = helper(in_left, index)
+            # build right subtree
+            root.right = helper(index + 1, in_right)
+            return root
+
+        # start from first preorder element
+        pre_idx = 0
+        # build a hashmap value -> its index
+        idx_map = {val: idx for idx, val in enumerate(inorder)}
+        return helper()
+
 
 """
     和 106 互相比較 
@@ -41,6 +73,16 @@ class Solution:
     這樣理解遞歸是不是更清晰了呢？
 
     t.ly/ygUX
+    
+Approach 1: Recursion
+
+Time Complexity: O(n^2), n 個 node, 然後 line 18, 19 slice 也需要做 O(n) 時間, 所以 total O(n^2)
+Space Complexity:O(n^2)
+
+Approach 2: Recursion_v2
+
+Time Complexity: O(N), use master therom to get this!!, 我猜是少了 slice 的原因
+Space Complexity: O(N), since we store the entire tree., 原因同上
 """
 
 if __name__ == '__main__':
@@ -51,9 +93,12 @@ if __name__ == '__main__':
     root_1.right.left = TreeNode(15)
     root_1.right.right = TreeNode(7)
 
-    preorder = [3,9,20,15,7]
-    inorder = [9,3,15,20,7]
+    preorder = [3, 9, 20, 15, 7]
+    inorder = [9, 3, 15, 20, 7]
 
     preorder_2 = [3, 9, 6, 8, 20, 15, 7]
     inorder_2 = [6, 9, 8, 3, 15, 20, 7]
     print(demo.buildTree(preorder_2, inorder_2))
+
+    demo2 = Solution2()
+    print(demo2.buildTree(preorder, inorder))
