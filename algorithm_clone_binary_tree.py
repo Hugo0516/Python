@@ -17,6 +17,7 @@ def createDupTree(root):
         return dupTree
     return None
 
+
 # 用偶自己寫的 即可
 def printTreeMidOrder(root):
     if root == None:

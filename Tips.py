@@ -370,3 +370,29 @@ https://leetcode.com/problems/peeking-iterator/solution/
 341 是下面
 284 是上面 = =
 """
+
+"""
+125, isdigit, isalnum, isalpha
+filter 用法
+filter(func, iterable) => func 的部分可以與 lambda 搭配
+EX: filter(isalpha, list)
+
+map(func, iterable) => func 的部分可以與 lambda 搭配
+EX: map(isalpha, list)
+"""
+
+"""
+LRU Cache => 用在 dp 
+看 1443, 
+"""
+
+"""
+146, 記得 dict.get(key, None) 用法 !!!
+"""
+
+
+"""
+對 python 來說:
+list = list + ? => '+'這個符號是 concatenate, 所以每用一次, 被加的 list 都要先被複製, 所以 O(n) time
+但是！！！, 用 extend(extend 和 += 同義) or 用 append 只要 O(1) time
+"""

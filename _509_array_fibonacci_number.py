@@ -38,6 +38,7 @@ class Solution3:
         return self.memoize(N)
 
 
+# Bottom-Up Approach using tabular
 class Solution4:
     def fib(self, N: int) -> int:
         if (N <= 1):
@@ -103,7 +104,7 @@ Approach 1: Recursion
 Time Complexity: O(2^n)
 Space Complexity: O(n)
 
-Approach 2: Bottom-Up Approach using Memoization
+Approach 2: Bottom-Up Approach using tabular
 
 Time Complexity: O(n) 
 Space Complexity: O(n)
@@ -113,7 +114,7 @@ Approach 3: Top-Down Approach using Memoization
 Time Complexity: O(n)
 Space Complexity: O(n)
 
-Approach 4: Iterative Top-Down Approach
+Approach 4: Bottom-Up Approach using tabular
 
 Time Complexity: O(n)
 Space Complexity: O(1)

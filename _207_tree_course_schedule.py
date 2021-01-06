@@ -19,9 +19,9 @@ class Solution:
         return True
 
     def _dfs(self, curr, graph, visited) -> bool:
-        if visited[curr] == 1:
+        if visited[curr] == 1:  # visiting
             return False
-        if visited[curr] == 2:
+        if visited[curr] == 2:  # visited
             return True
 
         visited[curr] = 1
@@ -35,6 +35,9 @@ class Solution:
 
 
 """
+2021 / 01 / 07 updated:
+這一題思路就是找出： "有沒有環", 而不是真正的 topological sort
+
 *** 和 210 互相參照 ***
 Hua Hua:
 這一題採用 topological sort, 
