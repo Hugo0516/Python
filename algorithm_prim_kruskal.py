@@ -53,7 +53,7 @@ def make_set(point):
     rank[point] = 0
 
 
-def find(point):    # O(LogV)
+def find(point):  # O(LogV)
     if node[point] != point:
         node[point] = find(node[point])
     return node[point]
@@ -79,7 +79,7 @@ def Kruskal(graph):
     i = 1
 
     edges = list(graph['edges'])
-    edges.sort()    # O(ELogE)
+    edges.sort()  # O(ELogE)
     for edge in edges:  # O(E)
         # print(i)
         i += 1

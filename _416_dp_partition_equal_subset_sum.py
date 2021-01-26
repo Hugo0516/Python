@@ -74,6 +74,16 @@ Case 2) sum j can be formed including ith  element, if dp[i−1][j−nums[i]]==t
 
 Time Complexity: O(m*n), m = tmp, n is the number of array
 Space Complexity: O(m*n)
+
+
+*** Follow up ***
+Facebook ask similar question, Facebook ask partition equal array sum
+=> Subset is not same as subarray. Subset allows you to pick any values for that set. Subarray means it has to be consecutive values.
+
+Reference:
+https://leetcode.com/discuss/interview-question/391865/facebook-software-engineer-phone-screen-interview-questions-reject
+https://www.geeksforgeeks.org/split-array-two-equal-sum-subarrays/
+
 """
 
 if __name__ == '__main__':

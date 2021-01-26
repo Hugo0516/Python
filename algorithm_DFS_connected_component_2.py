@@ -68,7 +68,7 @@ class Graph2:
 
 
 """
-2021 / 01 / 07
+2021 / 01 / 07, Finished by myself.
 Approach 1: For undirected disconnected component
 
 Time Complexity: O(V+E)

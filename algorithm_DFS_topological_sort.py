@@ -20,7 +20,7 @@ class Graph:
 
         # Recur for all the vertices adjacent to this vertex
         for i in self.graph[v]:
-            if visited[i] == False:
+            if visited[i] is False:
                 self.topologicalSortUtil(i, visited, stack)
 
             # Push current vertex to stack which stores result
@@ -36,32 +36,60 @@ class Graph:
         # Call the recursive helper function to store Topological
         # Sort starting from all vertices one by one
         for i in range(self.V):  # This is where the huge difference between with normal DFS
-            if visited[i] == False:
+            if visited[i] is False:
                 self.topologicalSortUtil(i, visited, stack)
 
             # Print contents of the stack
         print(stack[::-1])  # return list in reverse order
 
 
-# Driver Code
-g = Graph(6)
-g.addEdge(5, 2)
-g.addEdge(5, 0)
-g.addEdge(4, 0)
-g.addEdge(4, 1)
-g.addEdge(2, 3)
-g.addEdge(3, 1)
+class Graph2:
+    def __init__(self, vertices):
+        self.graph = defaultdict(list)  # dictionary containing adjacency List
+        self.V = vertices  # No. of vertices
 
-print("Following is a Topological Sort of the given graph")
-# Function Call
-g.topologicalSort()  # 5, 4, 2, 3, 1, 0
+    # function to add an edge to graph
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
 
-g2 = Graph(3)
-g2.addEdge(0, 1)
-g2.addEdge(1, 2)
-g2.addEdge(2, 0)
-g2.topologicalSort()
-print(g2.graph)
+    # A recursive function used by topologicalSort
+    def topologicalSortUtil(self, v, visited, stack):
+
+        if visited[v] == 1:  # visiting
+            return False
+        if visited[v] == 2:  # visited
+            return True
+
+        # Mark the current node as visited.
+        visited[v] = 1
+
+        # Recur for all the vertices adjacent to this vertex
+        for i in self.graph[v]:
+            if not self.topologicalSortUtil(i, visited, stack):
+                return False
+
+        visited[v] = 2
+        # Push current vertex to stack which stores result
+        stack.append(v)
+        return True
+
+    # The function to do Topological Sort. It uses recursive
+    # topologicalSortUtil()
+    def topologicalSort(self):
+        # Mark all the vertices as not visited
+        visited = [0] * self.V
+        stack = []
+
+        # Call the recursive helper function to store Topological
+        # Sort starting from all vertices one by one
+        for i in range(self.V):  # This is where the huge difference between with normal DFS
+            if not self.topologicalSortUtil(i, visited, stack):
+                return print("There is a cycle")
+
+            # Print contents of the stack
+        print(stack[::-1])  # return list in reverse order
+
+
 """    
 2021 / 01 / 07 updated
 
@@ -81,6 +109,14 @@ Conclusion: 注意每個 node 都要遍歷一遍, 且, 要注意放到 stack 後
 
 Time Complexity: O(V+E). The above algorithm is simply DFS with an extra stack. So time complexity is the same as DFS which is.
 Auxiliary space: O(V). The extra space is needed for the stack.
+
+Approach 2: Topological sort(DFS version) with cycle detection
+
+Time Complexity: O(V+E)
+Space Complexity: O(V)
+
+=> 這個 cycle detection 的機制是從 Hua Hua course schedule 的想法來的 !!!!
+
 --------------------
 比較：
 Topological sort vs DFS:
@@ -102,4 +138,36 @@ https://www.geeksforgeeks.org/topological-sorting/
 https://www.geeksforgeeks.org/applications-of-depth-first-search/
 
 
+*** 此外, 還有另外一種 topological sort 方法 ***
+1. Kahn's Algorithm => 用 in-degree = 0 下去做的
+2. Topological Sort 也可以用 BFS 來表示！！！
 """
+
+if __name__ == '__main__':
+    g = Graph(6)
+    g.addEdge(5, 2)
+    g.addEdge(5, 0)
+    g.addEdge(4, 0)
+    g.addEdge(4, 1)
+    g.addEdge(2, 3)
+    g.addEdge(3, 1)
+
+    print("Following is a Topological Sort of the given graph")
+    # Function Call
+    g.topologicalSort()  # 5, 4, 2, 3, 1, 0
+
+    print("\nFollowing is a Topological Sort of the given graph with cycle detection")
+    g2 = Graph2(3)
+    g2.addEdge(0, 1)
+    g2.addEdge(1, 2)
+    g2.addEdge(2, 0)
+    g2.topologicalSort()  # There is a cycle
+
+    g22 = Graph2(6)
+    g22.addEdge(5, 2)
+    g22.addEdge(5, 0)
+    g22.addEdge(4, 0)
+    g22.addEdge(4, 1)
+    g22.addEdge(2, 3)
+    g22.addEdge(3, 1)
+    g22.topologicalSort()  # [5, 4, 2, 3, 1, 0]

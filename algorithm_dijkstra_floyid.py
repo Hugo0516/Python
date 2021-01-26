@@ -18,7 +18,7 @@ def dijkstra(matrix_distance, source_node):
     found[source_node] = 1  # 我們的 source node 因為是起點，所以當然是 True
 
     for i in range(node_nums - 1):  # 扣除原點 還有五個點(即原點到那五個點的最短距離)
-        min = inf   # 這一行很重要哦！！！ 算是 initiate step
+        min = inf  # 這一行很重要哦！！！ 算是 initiate step
 
         # find the min node from the source node
         # 25-29行, 是要先求出"一個"與 source node 最靠近的點, 即 u 點 (即 花費最少的邊)
@@ -37,6 +37,7 @@ def dijkstra(matrix_distance, source_node):
                     dis[v] = dis[u] + matrix_distance[u][v]
 
     return dis
+
 
 # 記住！！！ 1個for 包著 2個 for
 
